@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>discography | Tsuyoshi A.</title>
+<meta name="description" content="Tsuyoshi A. のディスコグラフィー。bitbird, exobolt, wavforme, Diverse System 等からリリースした楽曲・リミックス一覧。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   Tsuyoshi A. — 旧WordPressサイトのデザイン再現版
+   --------------------------------------------------------------------------
+   色    : 背景 #1f1d1c / ヘッダー帯 #2e2c2b / 文字 #ffffff
+           アクセント(緑ボタン) #4e7c63
+   書体  : Quicksand (見出し・ナビ・ロゴ) + Noto Sans JP (日本語本文)
+   構成  : 中央揃え、カード枠なしのフラットなグリッド
+   ========================================================================== */
+
+:root {
+  --bg: #1f1d1c;
+  --band: #2e2c2b;
+  --text: #ffffff;
+  --text-soft: #d6d2cf;
+  --text-dim: #a29d99;
+  --accent: #4e7c63;
+  --accent-hover: #5c8f73;
+  --line: #3d3a38;
+
+  --font: "Quicksand", "Noto Sans JP", "Hiragino Sans", sans-serif;
+  --max: 1560px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+p { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-hover);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.wrap-narrow {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 640px) {
+  .wrap, .wrap-narrow { padding: 0 20px; }
+}
+
+/* ---------- ヘッダー ---------- */
+
+.site-header {
+  background: var(--band);
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  padding: 22px 40px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.logotype {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.1rem;
+}
+
+.nav-links a {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.85;
+  transition: opacity 0.2s var(--ease);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  opacity: 1;
+}
+
+.nav-links a[aria-current="page"] {
+  font-weight: 700;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  padding: 6px;
+  cursor: pointer;
+}
+
+.nav-toggle svg { width: 26px; height: 26px; }
+
+/* ページタイトル(ヘッダー帯の中に大きく表示) */
+.page-title {
+  text-align: center;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-weight: 700;
+  padding: 0 20px 34px;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 900px) {
+  .header-bar {
+    position: relative;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 16px 20px;
+  }
+
+  /* メニュー本体は幅ゼロなので、ボタンを margin-left:auto で右端に寄せる */
+  .header-bar > nav { order: 1; }
+
+  .nav-toggle {
+    display: block;
+    order: 2;
+    margin-left: auto;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--band);
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s var(--ease);
+    z-index: 30;
+  }
+
+  .nav-links.is-open {
+    max-height: 420px;
+    padding-bottom: 16px;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+/* ---------- ヒーロー(トップページ) ---------- */
+
+.hero {
+  position: relative;
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #141312 center / cover no-repeat;
+  padding: 80px 20px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1280px;
+  text-align: center;
+}
+
+.hero-copy {
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  margin-bottom: 1.6rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+/* ---------- ボタン ---------- */
+
+.btn-fill {
+  display: block;
+  width: 100%;
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  padding: 1.1em 1.5em;
+  transition: background 0.2s var(--ease);
+}
+
+.btn-fill:hover { background: var(--accent-hover); }
+
+.btn-fill.is-compact {
+  display: inline-block;
+  width: auto;
+  min-width: 270px;
+  padding: 1em 2.2em;
+}
+
+.btn-outline {
+  display: inline-block;
+  border: 2px solid var(--text);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.7em 1.6em;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.btn-outline:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.center { text-align: center; }
+
+/* ---------- セクション ---------- */
+
+.section {
+  padding: 72px 0;
+}
+
+.section-label {
+  text-align: center;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 2.6rem;
+}
+
+/* ---------- アートワークのグリッド(トップページ) ---------- */
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 56px 44px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.art-grid a,
+.art-grid .art-item {
+  display: block;
+}
+
+.art {
+  aspect-ratio: 1 / 1;
+  background: #2a2827;
+  overflow: hidden;
+}
+
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .art-grid { grid-template-columns: repeat(3, 1fr); gap: 32px 24px; }
+}
+
+@media (max-width: 560px) {
+  .art-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+}
+
+/* ---------- ディスコグラフィー ---------- */
+
+.release-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 64px 40px;
+}
+
+.release {
+  text-align: center;
+}
+
+.release .art { margin-bottom: 1.3rem; }
+
+.release h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.release p {
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.4rem;
+}
+
+@media (max-width: 1300px) {
+  .release-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 1000px) {
+  .release-grid { grid-template-columns: repeat(3, 1fr); gap: 48px 28px; }
+}
+
+@media (max-width: 700px) {
+  .release-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  .release h2 { font-size: 1.1rem; }
+  .release p { font-size: 0.92rem; }
+}
+
+/* ---------- about本文 ---------- */
+
+.bio {
+  max-width: 860px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 2;
+}
+
+.bio h2 {
+  font-size: 1.1rem;
+  margin: 2.6rem 0 0.6rem;
+}
+
+.bio h2:first-child { margin-top: 0; }
+
+.bio p { margin-bottom: 1.5rem; text-indent: 1em; }
+
+.bio ul { margin-bottom: 1.5rem; }
+
+.bio li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.3em;
+}
+
+.bio li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+}
+
+/* ---------- 機材グリッド ---------- */
+
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 64px 40px;
+}
+
+.gear {
+  text-align: center;
+}
+
+.gear .shot {
+  aspect-ratio: 1 / 1;
+  background: #2a2827;
+  overflow: hidden;
+  margin-bottom: 1.3rem;
+}
+
+.gear .shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gear h2 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.gear p {
+  color: var(--text-soft);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 1000px) {
+  .gear-grid { grid-template-columns: repeat(3, 1fr); gap: 48px 28px; }
+}
+
+@media (max-width: 700px) {
+  .gear-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+  .gear h2 { font-size: 1.1rem; }
+  .gear p { font-size: 0.92rem; }
+}
+
+/* ---------- ニュース ---------- */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px 56px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.news-item h2 {
+  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+  margin-bottom: 1.2rem;
+}
+
+.news-item h2 a:hover { color: var(--text-soft); }
+
+.news-item p {
+  color: var(--text-soft);
+  margin-bottom: 1.6rem;
+}
+
+.news-date {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 800px) {
+  .news-grid { grid-template-columns: 1fr; gap: 44px; }
+}
+
+/* ---------- works(テキストリスト) ---------- */
+
+.works {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 12px;
+}
+
+.works h2 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 3.4rem 0 1.4rem;
+  color: var(--text);
+}
+
+.works h2:first-child { margin-top: 0; }
+
+.works li {
+  position: relative;
+  padding-left: 1.5em;
+  margin-bottom: 1.35rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.works li::before {
+  content: "・";
+  position: absolute;
+  left: 0.2em;
+}
+
+.works .note {
+  margin: 1.6rem 0 0;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.works .plain {
+  margin: 1.4rem 0 0;
+  font-size: 1.05rem;
+}
+
+.works-sign {
+  max-width: 1000px;
+  margin: 5rem auto 0;
+  padding-left: 12px;
+  font-size: 1.05rem;
+}
+
+@media (max-width: 640px) {
+  .works li,
+  .works .note,
+  .works .plain,
+  .works h2,
+  .works-sign { font-size: 0.98rem; }
+}
+
+/* ---------- コンタクト ---------- */
+
+.contact-body {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-body p {
+  margin-bottom: 2.4rem;
+  color: var(--text-soft);
+  font-size: 1.05rem;
+}
+
+.link-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.link-list a {
+  border: 2px solid var(--text);
+  padding: 0.9em 1em;
+  font-weight: 700;
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.link-list a:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+/* ---------- フッター ---------- */
+
+.site-footer {
+  background: var(--band);
+  text-align: center;
+  padding: 34px 20px;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-bar">
+    <a href="index.html" class="logotype">Tsuyoshi A.</a>
+    <button class="nav-toggle" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">home</a></li>
+        <li><a href="about.html">about / gears</a></li>
+        <li><a href="discography.html" aria-current="page">discography</a></li>
+        <li><a href="news.html">news</a></li>
+        <li><a href="works.html">works</a></li>
+        <li><a href="contact.html">contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <h1 class="page-title">discography</h1>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="release-grid">
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/hakumei.jpg" alt="薄明 (ft. q&#x27;yul)"></div>
+        <h2>薄明 (ft. q&#x27;yul)</h2>
+        <p>tr.2 for Dennou.wav new album called concrete. , jp vocal melodic dnb/jpop</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/velvet-glide.jpg" alt="Velvet Glide"></div>
+        <h2>Velvet Glide</h2>
+        <p>tr.8 for wavforme 2025 winter comic market album. solid soul/liquid dnb song.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/mindscape-ep.jpg" alt="mindscape ep"></div>
+        <h2>mindscape ep</h2>
+        <p>new 5-track ep, featured Such for vocal this time. and nice blender artwork by kaito</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/just-wanna-feel-good.jpg" alt="just wanna feel good"></div>
+        <h2>just wanna feel good</h2>
+        <p>tr.1 for wavforme 2024 summer album -mirage- 4/4 organic prog house with very nice atmos</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/ordinary-days.jpg" alt="ordinary days"></div>
+        <h2>ordinary days</h2>
+        <p>Stream Palette 5 -chatting- by ZETA streamer k4sen and Diverse System</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/anew.jpg" alt="anew w/nenne"></div>
+        <h2>anew w/nenne</h2>
+        <p>prog house/organic house/jpop. song for spring season, solid house tune with nice vocal</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/reminisce.jpg" alt="reminisce w/ Wavfire"></div>
+        <h2>reminisce w/ Wavfire</h2>
+        <p>bitbird create together vol.4 tr5 really happy to be back on bb album since 2022.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/space-boyz.jpg" alt="Space Boyz (ft. Christian Hayward)"></div>
+        <h2>Space Boyz (ft. Christian Hayward)</h2>
+        <p>exobolt world vol.1 me and asu started this back in 2020 and finally it&#x27;s time to reveal!!</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/amidst-ep.jpg" alt="amidst ep"></div>
+        <h2>amidst ep</h2>
+        <p>5track ep finally available. enjoy. (artwork by kaitootomo)</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/amidst.jpg" alt="amidst"></div>
+        <h2>amidst</h2>
+        <p>emo/math rock ish music, feat. nenne and scro from our bitbird family. (artwork by kaitootomo)</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/evergreen.jpg" alt="evergreen"></div>
+        <h2>evergreen</h2>
+        <p>modern rock music feat. Mizu from our exobolt family (artwork by kaitootomo)</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/elevation.jpg" alt="elevation"></div>
+        <h2>elevation</h2>
+        <p>midwest emo influenced DnB w/Capturelight (artwork by kaitootomo)</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/prayer-remix.jpg" alt="prayer remix"></div>
+        <h2>prayer remix</h2>
+        <p>unofficial remix for 電音部 remix competition. unfortunately lost.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/junpyo.jpg" alt="純氷"></div>
+        <h2>純氷</h2>
+        <p>me and Ui made a J-pop tune and eventually sounds nice!! (artwork by morphina)</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/starlight.jpg" alt="starlight (ft.ねんね)"></div>
+        <h2>starlight (ft.ねんね)</h2>
+        <p>first exobolt release, invited ねんね for vocal. powerful but melancholic DnB.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/sundown.jpg" alt="sundown"></div>
+        <h2>sundown</h2>
+        <p>this tune is for wavforme - CITIES : NEON LIGHTS2 compilation album.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/escapism-remix.jpg" alt="escapism remix"></div>
+        <h2>escapism remix</h2>
+        <p>unofficial remix just for fun. pop punk emo dnb, smoothly matched with toto&#x27;s vocal.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/cosmic-tension.jpg" alt="cosmic tension"></div>
+        <h2>cosmic tension</h2>
+        <p>deep dnb track that I use for my certain dj situation. dark and atmospheric</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/good-days.jpg" alt="Good Days"></div>
+        <h2>Good Days</h2>
+        <p>wavforme - MBB3 compilation album. very smooth 4/4 tune glued with my guitars</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/feeling-alive-vip.jpg" alt="Feeling Alive VIP"></div>
+        <h2>Feeling Alive VIP</h2>
+        <p>vip of original one. this one suits well with garage/breaks set for sure.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/feeling-alive.jpg" alt="Feeling Alive"></div>
+        <h2>Feeling Alive</h2>
+        <p>w/9W3R7Y, あずきうい. kawaii 4/4 tune. played funky guitar chops for this.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/feather.jpg" alt="Feather"></div>
+        <h2>Feather</h2>
+        <p>Scan Prisma vol.2 compilation. tried some melodic and experimental jungly dnb style.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/runaway-remix.jpg" alt="Runaway remix"></div>
+        <h2>Runaway remix</h2>
+        <p>gold digger remix competition entry. bass house into liquid dnb. I really like the entire vibe of this.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/beacon.jpg" alt="Beacon"></div>
+        <h2>Beacon</h2>
+        <p>w/ stutters and inu. our first tune signed to San Holo&#x27;s bitbird. happy to be a bitbird fam. %↑↑↑</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/skycave-remix.jpg" alt="Skycave remix"></div>
+        <h2>Skycave remix</h2>
+        <p>tried to combine 3 different style (city pop/fusion/edm remix.) in to a 4/4 dance tune. added my gt solo🎸</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/pull-it-up.jpg" alt="Pull It Up"></div>
+        <h2>Pull It Up</h2>
+        <p>solid drum n bass album. tried to achieve very tight jump up style dnb. very suitable for tight dj set for sure.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/never-had-remix.jpg" alt="Never Had remix"></div>
+        <h2>Never Had remix</h2>
+        <p>entry for monstercat remix competition. 4th place. this one really changed the way I make music.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/emulation-remix.jpg" alt="emulation remix"></div>
+        <h2>emulation remix</h2>
+        <p>I made this remix for fun. loved the original so much. very dreamy pop/shoegaze music.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/listen.jpg" alt="Listen"></div>
+        <h2>Listen</h2>
+        <p>wavforme 2020 M3秋 album. MBB2. solid french disco/house tune.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/aimai-cyborg-remix.jpg" alt="曖昧サイボーグ remix"></div>
+        <h2>曖昧サイボーグ remix</h2>
+        <p>unofficial remix of neko hacker. invited my friend guitar player みりす for gt solo.</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+      <article class="release">
+        <div class="art"><img src="images/artwork/mistakes.jpg" alt="MISTAKES"></div>
+        <h2>MISTAKES</h2>
+        <p>説明文をここに入れてください。</p>
+        <a class="btn-outline" href="#" target="_blank" rel="noopener">Listen Here</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  2026 – tsuyoshi a.
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const toggle = document.querySelector(".nav-toggle");
+  const links = document.querySelector(".nav-links");
+  if (!toggle || !links) return;
+
+  toggle.addEventListener("click", () => {
+    const open = links.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  links.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", () => {
+      links.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+});
+
+// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠して
+// 背景色のタイルとして表示する(画像を配置すれば自動で表示される)
+document.addEventListener(
+  "error",
+  (e) => {
+    const el = e.target;
+    if (el instanceof HTMLImageElement) el.style.visibility = "hidden";
+  },
+  true
+);
+
+</script>
+</body>
+</html>
