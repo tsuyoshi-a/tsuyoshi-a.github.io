@@ -232,7 +232,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: -24px;
   background: var(--hero-img) center / cover no-repeat;
-  filter: blur(6px);
+  filter: blur(10px);
   z-index: 0;
 }
 
@@ -507,62 +507,92 @@ img { display: block; max-width: 100%; }
   .news-grid { grid-template-columns: 1fr; gap: 44px; }
 }
 
-/* ---------- works(テキストリスト) ---------- */
+/* ---------- works(2カラムのクレジット一覧) ---------- */
 
 .works {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding-left: 12px;
 }
+
+.works-section { margin-bottom: 4.2rem; }
+.works-section:last-child { margin-bottom: 0; }
 
 .works h2 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin: 3.4rem 0 1.4rem;
-  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.works h2:first-child { margin-top: 0; }
+/* 1件 = 上に相手先 / 下に内容(全画面幅で共通) */
+.credit {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
 
-.works li {
-  position: relative;
-  padding-left: 1.5em;
-  margin-bottom: 1.35rem;
-  font-size: 1.05rem;
+.credit:last-child { border-bottom: none; }
+
+.credit-who {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--text);
+  margin-bottom: 0.3rem;
 }
 
-.works li::before {
-  content: "・";
+.credit-what {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.credit-what a {
+  color: var(--text-soft);
+  border-bottom: 1px solid var(--muted-dim);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-what a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 会場ごとにまとめた公演リスト */
+.credit-what ul { margin: 0; }
+
+.credit-what li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.35em;
+}
+
+.credit-what li:last-child { margin-bottom: 0; }
+
+.credit-what li::before {
+  content: "–";
   position: absolute;
-  left: 0.2em;
+  left: 0;
+  color: var(--muted-dim);
 }
 
-.works .note {
-  margin: 1.6rem 0 0;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-.works .plain {
-  margin: 1.4rem 0 0;
-  font-size: 1.05rem;
+.works-note {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 1.2rem;
 }
 
 .works-sign {
-  max-width: 1000px;
-  margin: 5rem auto 0;
-  padding-left: 12px;
-  font-size: 1.05rem;
+  max-width: 1040px;
+  margin: 4.5rem auto 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
 }
 
-@media (max-width: 640px) {
-  .works li,
-  .works .note,
-  .works .plain,
-  .works h2,
-  .works-sign { font-size: 0.98rem; }
+@media (max-width: 760px) {
+  .credit-what,
+  .works-sign { font-size: 0.92rem; }
 }
 
 /* ---------- コンタクト ---------- */
@@ -708,52 +738,167 @@ img { display: block; max-width: 100%; }
   <div class="wrap">
     <div class="works">
 
-      <h2>-楽曲制作演奏など-</h2>
-      <!-- ▼ 項目を追加するときはこの li をコピーしてください -->
-      <ul>
-        <li>k4sen/Diverse System : Stream Palette 5 -Chatting- tr.12 / ordinary days 収録</li>
-        <li>Dennou.wav アルバム [concrete.] tr.2 / 薄明 (ft. q&rsquo;yul) 収録</li>
-        <li>Yami Yami🇹🇭 : &rdquo;Yurari Yureru&rdquo; 7弦ギターREC, 5弦ベースプログラミング等協力</li>
-        <li>蓮実えれな様 : Dualistic Stars ギターアレンジREC, (特典リマスタリング)</li>
-        <li>bitbird : create together vol. 4 / tr.05 &ndash; reminisce アルバム収録</li>
-        <li>bitbird : create together vol. 3 / tr.02 &ndash; beacon アルバム収録</li>
-        <li>あずきうい : 純氷 / 作編曲, ギター, vocal editting, mix/master</li>
-        <li>wavforme : Cities : Neonlights 2 / tr.11 &ndash; Sundown 楽曲提供</li>
-        <li>wavforme : Cities : Neonlights 3 / tr.8 &ndash; Velvet Glide 楽曲提供</li>
-        <li>wavforme : new wave 2024 S/S [mirage] &ndash; tr.1 &ndash; Velvet Glide 提供</li>
-        <li>wavforme : Multiple Beat Banger 2 / tr.9 &ndash; Listen 楽曲提供</li>
-        <li>wavforme : Multiple Beat Banger 3 / tr.11 &ndash; Good Days 楽曲提供</li>
-        <li>株式会社ニューステラ : ドローン映像作品楽曲制作</li>
-        <li>その他 : 中小企業様の楽曲制作, 小中学生向け教材楽曲提供他, 複数ミックスマスター等</li>
-      </ul>
+      <!-- ============ 楽曲制作・演奏 ============
+           ▼ 項目を追加するときは <div class="credit"> のブロックをコピーしてください -->
+      <div class="works-section">
+        <h2>楽曲制作 / 演奏</h2>
 
-      <h2>-エンジニアリング他-</h2>
-      <ul>
-        <li>SSS LLC. : 東北ずん子・ずんだもんプロジェクト / 東北イタコ 歌唱データベース協力</li>
-        <li>ボーカルエンジニアリング : 複数</li>
-        <li>音声作品エンジニアリング敬称略 : 山田じぇみ子, 御子柴 泉, 藤村莉央, 浅木式, 来夢ふらん, 恋鈴桃歌, 西瓜すいか, 杏仁らいち, 乙倉ゅい等 累計販売2万件以上</li>
-        <li>その他 : マニピュレーター、ローディー、ミックスなど…</li>
-      </ul>
+        <div class="credit">
+          <div class="credit-who">k4sen / Diverse System</div>
+          <div class="credit-what">Stream Palette 5 -Chatting- tr.12 <a href="https://sp5.diverse.jp/" target="_blank" rel="noopener">ordinary days</a> 収録</div>
+        </div>
 
-      <h2>DJ, Live Set</h2>
-      <ul>
-        <li>clubasia : Neko Hacker, home sweet home vol.1</li>
-        <li>WARP新宿 : JOYRYDE 来日公演DJ出演</li>
-        <li>WARP新宿 : Mesto virtual来日公演DJ出演</li>
-        <li>新木場ageHa : (現在閉館スタジオコースト) LiL TEXAS virtual来日公演DJ出演</li>
-        <li>Miyashita Park or : wavforme showcase DJ出演</li>
-        <li>CIRCUS TOKYO : Oppidan来日公演DJ出演</li>
-        <li>CIRCUS TOKYO : Beginning, REAPER来日公演DJ出演</li>
-        <li>CIRCUS TOKYO : Snow Machine &ndash; ShockOne, Godlands, TWERL来日公演DJ出演</li>
-        <li>CIRCUS TOKYO : Beginning, emoning, Manilla Killa (w/Jai Wolf) 来日公演DJ出演</li>
-        <li>CIRCUS TOKYO : Beginning, OOTORO来日公演DJ出演</li>
-        <li>CIRCUS TOKYO : Beginning, Axel Boy online公演DJ出演</li>
-        <li>CIRCUS TOKYO : Beginning, Subshock&amp;Evangelos online公演DJ出演</li>
-      </ul>
-      <p class="note">… 他womb, 野外イベントなど…</p>
+        <div class="credit">
+          <div class="credit-who">WE DIE YOUNG</div>
+          <div class="credit-what">アルバム AFTERLIFE vol.1 / tr.3 <a href="https://www.submithub.com/link/afterlife-vol1" target="_blank" rel="noopener">Faded Rain (feat. wind flower)</a> 楽曲収録</div>
+        </div>
 
-      <h2>&ndash;Labels and artist agency that I worked with&ndash;</h2>
-      <p class="plain">bitbird, exobolt, diverse system, wavforme, newcome, etc..</p>
+        <div class="credit">
+          <div class="credit-who">Dennou.wav</div>
+          <div class="credit-what">アルバム [concrete.] tr.2 <a href="https://ffm.to/dnwv-concrete" target="_blank" rel="noopener">薄明 (ft. q&rsquo;yul)</a> 収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">Yami Yami 🇹🇭</div>
+          <div class="credit-what"><a href="https://www.youtube.com/watch?v=YzpR88jPQfk" target="_blank" rel="noopener">&ldquo;Yurari Yureru&rdquo;</a> 7弦ギターREC, 5弦ベースプログラミング等協力</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">蓮実えれな 様</div>
+          <div class="credit-what">Dualistic Stars ギターアレンジREC, (特典リマスタリング)</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">bitbird</div>
+          <div class="credit-what">create together vol.4 / tr.05 <a href="https://bitbird.lnk.to/ctv4" target="_blank" rel="noopener">reminisce</a> アルバム収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">bitbird</div>
+          <div class="credit-what">create together vol.3 / tr.02 <a href="https://bitbird.lnk.to/CT3" target="_blank" rel="noopener">beacon</a> アルバム収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">あずきうい</div>
+          <div class="credit-what"><a href="https://fanlink.tv/junpyou" target="_blank" rel="noopener">純氷</a> / 作編曲, ギター, vocal editting, mix/master</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">wavforme</div>
+          <div class="credit-what">Cities : Neonlights 2 / tr.11 <a href="https://wavforme.com/releases/wav-040/" target="_blank" rel="noopener">Sundown</a> 楽曲収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">wavforme</div>
+          <div class="credit-what">Cities : Neonlights 3 / tr.8 <a href="https://wavforme.fanlink.tv/wav-054" target="_blank" rel="noopener">Velvet Glide</a> 楽曲収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">wavforme</div>
+          <div class="credit-what">new wave 2024 S/S [mirage] / tr.1 <a href="https://wavforme.com/releases/newwave2024ss/" target="_blank" rel="noopener">just wanna feel good</a> 楽曲収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">wavforme</div>
+          <div class="credit-what">Multiple Beat Banger 2 / tr.9 <a href="https://wavforme.com/releases/wav-029/" target="_blank" rel="noopener">Listen</a> 楽曲収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">wavforme</div>
+          <div class="credit-what">Multiple Beat Banger 3 / tr.11 <a href="https://wavforme.com/releases/wav-036/" target="_blank" rel="noopener">Good Days</a> 楽曲収録</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">株式会社ニューステラ</div>
+          <div class="credit-what">ドローン映像作品 楽曲制作</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">その他</div>
+          <div class="credit-what">中小企業様の楽曲制作, 小中学生向け教材楽曲提供他, 複数ミックスマスター等</div>
+        </div>
+      </div>
+
+      <!-- ============ エンジニアリング ============ -->
+      <div class="works-section">
+        <h2>エンジニアリング</h2>
+
+        <div class="credit">
+          <div class="credit-who">SSS LLC.</div>
+          <div class="credit-what"><a href="https://zunko.jp/" target="_blank" rel="noopener">東北ずん子・ずんだもんプロジェクト</a> / 東北イタコ 歌唱データベース協力</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">ボーカルエンジニアリング</div>
+          <div class="credit-what">複数</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">音声作品エンジニアリング</div>
+          <div class="credit-what">敬称略 : 山田じぇみ子, 御子柴 泉, 藤村莉央, 浅木式, 来夢ふらん, 恋鈴桃歌, 西瓜すいか, 杏仁らいち, 乙倉ゅい 等<br>累計販売2万件以上</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">その他</div>
+          <div class="credit-what">マニピュレーター、ローディー、ミックスなど…</div>
+        </div>
+      </div>
+
+      <!-- ============ DJ / Live Set(会場ごとにまとめています) ============ -->
+      <div class="works-section">
+        <h2>DJ / Live Set</h2>
+
+        <div class="credit">
+          <div class="credit-who">CIRCUS TOKYO</div>
+          <div class="credit-what">
+            <ul>
+              <li>Oppidan 来日公演 DJ出演</li>
+              <li>Beginning, REAPER 来日公演 DJ出演</li>
+              <li>Snow Machine &ndash; ShockOne, Godlands, TWERL 来日公演 DJ出演</li>
+              <li>Beginning, emoning, Manilla Killa (w/Jai Wolf) 来日公演 DJ出演</li>
+              <li>Beginning, OOTORO 来日公演 DJ出演</li>
+              <li>Beginning, Axel Boy online公演 DJ出演</li>
+              <li>Beginning, Subshock &amp; Evangelos online公演 DJ出演</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">WARP 新宿</div>
+          <div class="credit-what">
+            <ul>
+              <li>JOYRYDE 来日公演 DJ出演</li>
+              <li>Mesto virtual来日公演 DJ出演</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">clubasia</div>
+          <div class="credit-what">Neko Hacker, home sweet home vol.1</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">新木場 ageHa</div>
+          <div class="credit-what">(現在閉館 スタジオコースト) LiL TEXAS virtual来日公演 DJ出演</div>
+        </div>
+
+        <div class="credit">
+          <div class="credit-who">Miyashita Park or</div>
+          <div class="credit-what">wavforme showcase DJ出演</div>
+        </div>
+
+        <p class="works-note">… 他 womb, 野外イベントなど…</p>
+      </div>
+
+      <!-- ============ レーベル / エージェンシー ============ -->
+      <div class="works-section">
+        <h2>Labels and artist agency that I worked with</h2>
+        <div class="credit">
+          <div class="credit-who">&nbsp;</div>
+          <div class="credit-what">bitbird, exobolt, diverse system, wavforme, WDY, newcome, etc..</div>
+        </div>
+      </div>
 
     </div>
 
