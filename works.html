@@ -598,9 +598,29 @@ img { display: block; max-width: 100%; }
 
 .works-sign {
   max-width: 1040px;
-  margin: 4.5rem auto 0;
+  margin: 4rem auto 0;
   font-size: 0.95rem;
   color: var(--text-dim);
+}
+
+/* ページ末尾の問い合わせ導線 */
+.works-cta {
+  max-width: 1040px;
+  margin: 3.2rem auto 0;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.works-cta p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
+@media (max-width: 760px) {
+  .works-cta p { font-size: 0.92rem; }
 }
 
 @media (max-width: 760px) {
@@ -916,6 +936,11 @@ img { display: block; max-width: 100%; }
     </div>
 
     <p class="works-sign">Tsuyoshi A.</p>
+
+    <!-- ▼ 問い合わせへの導線 -->
+    <div class="works-cta">
+      <a class="btn-outline" href="contact.html">お問い合わせはこちら</a>
+    </div>
   </div>
 </section>
 
