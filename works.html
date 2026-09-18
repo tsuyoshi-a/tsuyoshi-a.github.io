@@ -548,15 +548,28 @@ img { display: block; max-width: 100%; }
   line-height: 1.7;
 }
 
+/* リンクの下線は控えめに。ホバーではっきりさせる */
 .credit-what a {
   color: var(--text-soft);
-  border-bottom: 1px solid var(--muted-dim);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
   transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
 }
 
 .credit-what a:hover {
   color: var(--accent);
   border-color: var(--accent);
+}
+
+/* 左側(相手先)のリンク。元から緑なので下線のみで示す */
+.credit-who a {
+  color: inherit;
+  border-bottom: 1px solid rgba(78, 124, 99, 0.3);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-who a:hover {
+  color: var(--text);
+  border-color: var(--text);
 }
 
 /* 会場ごとにまとめた公演リスト */
@@ -744,8 +757,8 @@ img { display: block; max-width: 100%; }
         <h2>楽曲制作 / 演奏</h2>
 
         <div class="credit">
-          <div class="credit-who">k4sen / Diverse System</div>
-          <div class="credit-what">Stream Palette 5 -Chatting- tr.12 <a href="https://sp5.diverse.jp/" target="_blank" rel="noopener">ordinary days</a> 収録</div>
+          <div class="credit-who">k4sen / <a href="https://diverse.jp/" target="_blank" rel="noopener">Diverse System</a></div>
+          <div class="credit-what"><a href="https://sp5.diverse.jp/" target="_blank" rel="noopener">Stream Palette 5 -Chatting-</a> tr.12 ordinary days 収録</div>
         </div>
 
         <div class="credit">
@@ -769,12 +782,12 @@ img { display: block; max-width: 100%; }
         </div>
 
         <div class="credit">
-          <div class="credit-who">bitbird</div>
+          <div class="credit-who"><a href="https://bitbirdofficial.com/" target="_blank" rel="noopener">bitbird</a></div>
           <div class="credit-what">create together vol.4 / tr.05 <a href="https://bitbird.lnk.to/ctv4" target="_blank" rel="noopener">reminisce</a> アルバム収録</div>
         </div>
 
         <div class="credit">
-          <div class="credit-who">bitbird</div>
+          <div class="credit-who"><a href="https://bitbirdofficial.com/" target="_blank" rel="noopener">bitbird</a></div>
           <div class="credit-what">create together vol.3 / tr.02 <a href="https://bitbird.lnk.to/CT3" target="_blank" rel="noopener">beacon</a> アルバム収録</div>
         </div>
 
@@ -784,27 +797,27 @@ img { display: block; max-width: 100%; }
         </div>
 
         <div class="credit">
-          <div class="credit-who">wavforme</div>
+          <div class="credit-who"><a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a></div>
           <div class="credit-what">Cities : Neonlights 2 / tr.11 <a href="https://wavforme.com/releases/wav-040/" target="_blank" rel="noopener">Sundown</a> 楽曲収録</div>
         </div>
 
         <div class="credit">
-          <div class="credit-who">wavforme</div>
+          <div class="credit-who"><a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a></div>
           <div class="credit-what">Cities : Neonlights 3 / tr.8 <a href="https://wavforme.fanlink.tv/wav-054" target="_blank" rel="noopener">Velvet Glide</a> 楽曲収録</div>
         </div>
 
         <div class="credit">
-          <div class="credit-who">wavforme</div>
+          <div class="credit-who"><a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a></div>
           <div class="credit-what">new wave 2024 S/S [mirage] / tr.1 <a href="https://wavforme.com/releases/newwave2024ss/" target="_blank" rel="noopener">just wanna feel good</a> 楽曲収録</div>
         </div>
 
         <div class="credit">
-          <div class="credit-who">wavforme</div>
+          <div class="credit-who"><a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a></div>
           <div class="credit-what">Multiple Beat Banger 2 / tr.9 <a href="https://wavforme.com/releases/wav-029/" target="_blank" rel="noopener">Listen</a> 楽曲収録</div>
         </div>
 
         <div class="credit">
-          <div class="credit-who">wavforme</div>
+          <div class="credit-who"><a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a></div>
           <div class="credit-what">Multiple Beat Banger 3 / tr.11 <a href="https://wavforme.com/releases/wav-036/" target="_blank" rel="noopener">Good Days</a> 楽曲収録</div>
         </div>
 
@@ -896,7 +909,7 @@ img { display: block; max-width: 100%; }
         <h2>Labels and artist agency that I worked with</h2>
         <div class="credit">
           <div class="credit-who">&nbsp;</div>
-          <div class="credit-what">bitbird, exobolt, diverse system, wavforme, WDY, newcome, etc..</div>
+          <div class="credit-what"><a href="https://bitbirdofficial.com/" target="_blank" rel="noopener">bitbird</a>, exobolt, <a href="https://diverse.jp/" target="_blank" rel="noopener">diverse system</a>, <a href="https://wavforme.com/" target="_blank" rel="noopener">wavforme</a>, WDY, newcome, etc..</div>
         </div>
       </div>
 
