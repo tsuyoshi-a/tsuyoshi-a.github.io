@@ -556,7 +556,15 @@ img { display: block; max-width: 100%; }
   margin-bottom: 1.2rem;
 }
 
-.news-item h2 a:hover { color: var(--text-soft); }
+.news-item h2 a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.news-item h2 a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
 
 .news-item p {
   color: var(--text-soft);
@@ -810,6 +818,36 @@ img { display: block; max-width: 100%; }
 
 
 /* ---------- 個別記事ページ ---------- */
+
+/* 記事ページの見出し帯。ヘッダーが重なる分の余白を確保する */
+.article-head {
+  background: var(--band);
+  padding: calc(var(--nav-h) + 12px) 20px 30px;
+}
+
+.article-head-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-head h1 {
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.7rem;
+}
+
+.article-head .article-date {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .article-head { padding-top: calc(var(--nav-h-sm) + 18px); }
+}
+
 
 .article {
   max-width: 760px;
@@ -1111,13 +1149,18 @@ img { display: block; max-width: 100%; }
   </div>
 </header>
 
-<section class="section below-nav">
+<div class="article-head">
+  <div class="article-head-inner">
+    <!-- 【ここを書き換える】記事タイトル -->
+    <h1>Stream Palette 5 -chatting- に「ordinary days」を提供しました</h1>
+    <!-- 【ここを書き換える】日付 -->
+    <p class="article-date">2026年4月18日</p>
+  </div>
+</div>
+
+<section class="section">
   <div class="wrap">
     <article class="article">
-
-      <h1 class="page-title" style="padding: 0 0 20px; text-align: left; font-size: clamp(1.6rem, 3.4vw, 2.4rem);">Stream Palette 5 -chatting- に「ordinary days」を提供しました</h1>
-
-      <p class="article-meta">2026年4月18日</p>
 
       <div class="article-hero">
         <img src="../images/artwork/SP5_Wallpaper_16-9-4K_Chatting.jpeg" alt="Stream Palette 5 -chatting-">
@@ -1127,7 +1170,9 @@ img { display: block; max-width: 100%; }
 
         <p>ZETA DIVISION所属のストリーマー k4sen さんと <a href="https://diverse.jp/" target="_blank" rel="noopener">Diverse System</a> によるコンピレーションアルバム <strong>Stream Palette 5 -chatting-</strong> に、Tsuyoshi A. の楽曲「<strong>ordinary days</strong>」が収録されています。</p>
 
-        <p>（ここに制作時のエピソードや、曲について書きたいことを追記してください。どんな音楽的アプローチをしたか、参加の経緯、聴きどころなどを書くと読み物として成立します。）</p>
+        <p>Diverse System での公募を知って以来どこかで応募してみようと思っていましたが、k4sen さんのストリームパレットに関してはよく知るコンテンツの一つで、心地よい4つ打ち楽曲を提供できればと思って制作しました。</p>
+
+        <p>採用いただいて本当に嬉しいです。ありがとう Diverse System / k4sen さん🙂‍↕️</p>
 
         <h2>収録情報</h2>
 

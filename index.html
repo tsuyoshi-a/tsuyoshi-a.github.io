@@ -553,7 +553,15 @@ img { display: block; max-width: 100%; }
   margin-bottom: 1.2rem;
 }
 
-.news-item h2 a:hover { color: var(--text-soft); }
+.news-item h2 a {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.news-item h2 a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
 
 .news-item p {
   color: var(--text-soft);
@@ -807,6 +815,36 @@ img { display: block; max-width: 100%; }
 
 
 /* ---------- 個別記事ページ ---------- */
+
+/* 記事ページの見出し帯。ヘッダーが重なる分の余白を確保する */
+.article-head {
+  background: var(--band);
+  padding: calc(var(--nav-h) + 12px) 20px 30px;
+}
+
+.article-head-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-head h1 {
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.7rem;
+}
+
+.article-head .article-date {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .article-head { padding-top: calc(var(--nav-h-sm) + 18px); }
+}
+
 
 .article {
   max-width: 760px;
