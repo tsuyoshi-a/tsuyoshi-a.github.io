@@ -407,9 +407,14 @@ img { display: block; max-width: 100%; }
 /* スマホではさらに浅く。下のコンテンツが早く見え始める */
 @media (max-width: 640px) {
   .hero {
-    min-height: 52vh;
-    padding: calc(var(--nav-h-sm) + 22px) 20px 44px;
+    /* 縦幅。数値を下げるほど横長に見える */
+    min-height: 38vh;
+    padding: calc(var(--nav-h-sm) + 18px) 20px 32px;
   }
+
+  /* 縦が短くなる分、画像を拡大して寄りの絵にする。
+     1 = 等倍、数値を上げるほどズームする */
+  .hero::before { transform: scale(1.35); }
 }
 
 /* 背景画像のレイヤー。画像パスは index.html の --hero-img で指定している。
@@ -584,6 +589,8 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 560px) {
   .art-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  /* 2列では15枚だと最後の1枚が余るので、この印を付けた枚だけ隠す */
+  .art-item.hide-2col { display: none; }
 }
 
 /* ---------- ディスコグラフィー ---------- */

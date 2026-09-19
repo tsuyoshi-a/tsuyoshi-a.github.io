@@ -383,9 +383,14 @@ img { display: block; max-width: 100%; }
 /* スマホではさらに浅く。下のコンテンツが早く見え始める */
 @media (max-width: 640px) {
   .hero {
-    min-height: 52vh;
-    padding: calc(var(--nav-h-sm) + 22px) 20px 44px;
+    /* 縦幅。数値を下げるほど横長に見える */
+    min-height: 38vh;
+    padding: calc(var(--nav-h-sm) + 18px) 20px 32px;
   }
+
+  /* 縦が短くなる分、画像を拡大して寄りの絵にする。
+     1 = 等倍、数値を上げるほどズームする */
+  .hero::before { transform: scale(1.35); }
 }
 
 /* 背景画像のレイヤー。画像パスは index.html の --hero-img で指定している。
@@ -560,6 +565,8 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 560px) {
   .art-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  /* 2列では15枚だと最後の1枚が余るので、この印を付けた枚だけ隠す */
+  .art-item.hide-2col { display: none; }
 }
 
 /* ---------- ディスコグラフィー ---------- */
@@ -1329,7 +1336,7 @@ img { display: block; max-width: 100%; }
       <a class="art-item reveal reveal-d1" href="https://hypeddit.com/exobolt/worldsvol1" target="_blank" rel="noopener" aria-label="Space Boyz (ft. Christian Hayward)"><div class="art"><img loading="lazy" src="images/artwork/spaceboyz.jpeg" alt="Space Boyz (ft. Christian Hayward)"></div></a>  <!-- Space Boyz (ft. Christian Hayward) -->
       <a class="art-item reveal reveal-d2" href="https://wavforme.com/releases/wav-036/" target="_blank" rel="noopener" aria-label="Good Days"><div class="art"><img loading="lazy" src="images/artwork/mbb3.jpeg" alt="Good Days"></div></a>  <!-- Good Days -->
       <a class="art-item reveal reveal-d3" href="https://artists.landr.com/064837238173" target="_blank" rel="noopener" aria-label="evergreen"><div class="art"><img loading="lazy" src="images/artwork/evergreen_tr_2.jpeg" alt="evergreen"></div></a>  <!-- evergreen -->
-      <a class="art-item reveal reveal-d4" href="https://artists.landr.com/064837232706" target="_blank" rel="noopener" aria-label="elevation"><div class="art"><img loading="lazy" src="images/artwork/elevation_tr_1.jpeg" alt="elevation"></div></a>  <!-- elevation -->
+      <a class="art-item hide-2col reveal reveal-d4" href="https://artists.landr.com/064837232706" target="_blank" rel="noopener" aria-label="elevation"><div class="art"><img loading="lazy" src="images/artwork/elevation_tr_1.jpeg" alt="elevation"></div></a>  <!-- elevation -->
     </div>
 
     <p class="center reveal" style="margin-top: 72px;">
