@@ -232,7 +232,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: -24px;
   background: var(--hero-img) center / cover no-repeat;
-  filter: blur(6px);
+  filter: blur(10px);
   z-index: 0;
 }
 
@@ -507,62 +507,125 @@ img { display: block; max-width: 100%; }
   .news-grid { grid-template-columns: 1fr; gap: 44px; }
 }
 
-/* ---------- works(テキストリスト) ---------- */
+/* ---------- works(2カラムのクレジット一覧) ---------- */
 
 .works {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding-left: 12px;
 }
+
+.works-section { margin-bottom: 4.2rem; }
+.works-section:last-child { margin-bottom: 0; }
 
 .works h2 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin: 3.4rem 0 1.4rem;
-  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.works h2:first-child { margin-top: 0; }
+/* 1件 = 上に相手先 / 下に内容(全画面幅で共通) */
+.credit {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
 
-.works li {
-  position: relative;
-  padding-left: 1.5em;
-  margin-bottom: 1.35rem;
-  font-size: 1.05rem;
+.credit:last-child { border-bottom: none; }
+
+.credit-who {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--text);
+  margin-bottom: 0.3rem;
 }
 
-.works li::before {
-  content: "・";
+.credit-what {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* リンクの下線は控えめに。ホバーではっきりさせる */
+.credit-what a {
+  color: var(--text-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-what a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 左側(相手先)のリンク。元から緑なので下線のみで示す */
+.credit-who a {
+  color: inherit;
+  border-bottom: 1px solid rgba(78, 124, 99, 0.3);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-who a:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* 会場ごとにまとめた公演リスト */
+.credit-what ul { margin: 0; }
+
+.credit-what li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.35em;
+}
+
+.credit-what li:last-child { margin-bottom: 0; }
+
+.credit-what li::before {
+  content: "–";
   position: absolute;
-  left: 0.2em;
+  left: 0;
+  color: var(--muted-dim);
 }
 
-.works .note {
-  margin: 1.6rem 0 0;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-.works .plain {
-  margin: 1.4rem 0 0;
-  font-size: 1.05rem;
+.works-note {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 1.2rem;
 }
 
 .works-sign {
-  max-width: 1000px;
-  margin: 5rem auto 0;
-  padding-left: 12px;
-  font-size: 1.05rem;
+  max-width: 1040px;
+  margin: 4rem auto 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
 }
 
-@media (max-width: 640px) {
-  .works li,
-  .works .note,
-  .works .plain,
-  .works h2,
-  .works-sign { font-size: 0.98rem; }
+/* ページ末尾の問い合わせ導線 */
+.works-cta {
+  max-width: 1040px;
+  margin: 3.2rem auto 0;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.works-cta p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
+@media (max-width: 760px) {
+  .works-cta p { font-size: 0.92rem; }
+}
+
+@media (max-width: 760px) {
+  .credit-what,
+  .works-sign { font-size: 0.92rem; }
 }
 
 /* ---------- コンタクト ---------- */
@@ -680,6 +743,286 @@ img { display: block; max-width: 100%; }
   justify-content: center;
 }
 
+
+/* ---------- 個別記事ページ ---------- */
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-hero {
+  margin-bottom: 2.4rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.article-hero img {
+  width: 100%;
+  height: auto;
+}
+
+.article-body {
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--text-soft);
+}
+
+.article-body h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.8rem 0 1rem;
+}
+
+.article-body h2:first-child { margin-top: 0; }
+
+.article-body p { margin-bottom: 1.6rem; }
+
+.article-body ul { margin: 0 0 1.6rem; }
+
+.article-body li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.article-body li::before {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.article-body a {
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.article-body a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.article-body strong { color: var(--text); font-weight: 700; }
+
+/* 記事末尾のリンク集 */
+.article-links {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 一覧へ戻る導線 */
+.article-back {
+  max-width: 760px;
+  margin: 3.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.article-back a {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  transition: color 0.2s var(--ease);
+}
+
+.article-back a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .article-body { font-size: 0.94rem; }
+}
+
+
+/* =========================================================================
+   about ページ用の拡張レイアウト
+   セクションごとに背景を切り替え、狭い本文幅と大きな写真でリズムを作る
+   ========================================================================= */
+
+/* 背景を一段明るくした帯 */
+.band-alt { background: #262321; }
+
+/* ページ上部の全幅写真 */
+.page-hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #141312;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-img) center 35% / cover no-repeat;
+  z-index: 0;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%);
+  z-index: 0;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px 52px;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.page-hero p {
+  max-width: 34em;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .page-hero { min-height: 38vh; }
+  .page-hero-inner { padding: 0 20px 36px; }
+  /* スマホでは説明文を隠し、写真とタイトルだけ見せる */
+  .page-hero p { display: none; }
+  .page-hero h1 { margin-bottom: 0; }
+}
+
+/* 狭い本文カラム。中央に置いて中身は左揃え */
+.prose {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.prose h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.prose p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+.prose ul { margin: 0 0 1.5rem; }
+
+.prose li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 0.45em;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.prose li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.prose .lead-sm {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 0.9rem;
+}
+
+/* 段落の間に挟む大きな写真 */
+.figure-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.figure-wide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure-caption {
+  max-width: 1100px;
+  margin: 0.9rem auto 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* セクション見出し(中央) */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 500;
+  margin-bottom: 0.9rem;
+}
+
+.section-intro {
+  max-width: 44em;
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* =========================================================================
+   スクロールに合わせたフェードイン
+   ========================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 </style>
 </head>
 <body>
@@ -701,87 +1044,127 @@ img { display: block; max-width: 100%; }
       </ul>
     </nav>
   </div>
-  <h1 class="page-title">about / gears</h1>
 </header>
 
-<section class="section tight-bottom">
-  <div class="wrap-narrow">
-    <div class="bio">
+<!-- ▼ 上部の写真。--hero-img のパスを差し替えてください(縦長より横長の写真が向いています) -->
+<section class="page-hero" style="--hero-img: url('images/gear/tsu_photo.jpg');">
+  <div class="page-hero-inner">
+    <h1 class="reveal">about / gears</h1>
+    <p class="reveal reveal-d1">ギタリスト / 作編曲家。国内外のレーベルへの楽曲提供、ギターレコーディング、ミックス・マスタリング、音声編集などを手がけています。</p>
+  </div>
+</section>
 
-      <h2>【経歴】</h2>
-      <p>メイン楽器のギターを2011年ごろから触り始めREC、アレンジ、ライブやサポートなど作編曲、自宅rec等で使用しております。</p>
-      <p>その延長線に2019年頃より楽曲制作とDJをはじめ、主に海外レーベル、オランダbitbirdをはじめ複数レーベル等から楽曲をリリースしています。ほか国内アルバムにも複数参加など作編曲、演奏やDJ等に取り組んでいます。その一方で声優さんの音声編集サポートやずんだもんプロジェクトのサポート、アニソン現場の裏方など支える業務もさせていただいております。</p>
-      <p>2022にはSan Holo自身のレーベルbitbirdにサインし楽曲をリリース、J-WAVE, block.fm等ラジオでも取り上げられたほか楽曲提供、作品BGMなど制作をしながらその後イギリスexoboltから2曲リリースされました。最近ではZETA DIVISIONストリーマーk4senさんとDiverse System企画のアルバム新作 Stream Palette 5 -chatting- に楽曲が収録されております。</p>
-
-      <h2>【可能な業務】</h2>
-      <p>作編曲, BGM製作, ギターアレンジ/レコーディング, 演奏, ライブマニピュレーター, ボーカル編集、音声編集/バイノーラル可(カット, se追加, 整音, ポッドキャスト編集等) ミックス、マスタリング等対応可能でございます。英語可</p>
-
-      <h2>【使用ソフト, 機材】</h2>
-      <ul>
-        <li>PC : M1 Pro MacBook Pro 14″ (サブpc / win11 ryzen5, 6600xt / mini itx build)</li>
-        <li>DAW : Logic Pro 11, その他プラグイン (UA, iZotope, oeksound, ni, ik, neural dsp等)</li>
-        <li>ギター : ストラト, テレ, ムスタング, レスポール, 7弦, アコギ, ナイロン, ウクレレ</li>
-      </ul>
-
+<!-- ============ 経歴 ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="prose reveal">
+      <h2>経歴</h2>
+      <p>メイン楽器のギターを2011年ごろから触り始め、REC、アレンジ、ライブやサポートなど作編曲、自宅rec等で使用しております。</p>
+      <p>その延長線に2019年頃より楽曲制作とDJをはじめ、主に海外レーベル、オランダ bitbird をはじめ複数レーベル等から楽曲をリリースしています。ほか国内アルバムにも複数参加など作編曲、演奏やDJ等に取り組んでいます。その一方で声優さんの音声編集サポートやずんだもんプロジェクトのサポート、アニソン現場の裏方など支える業務もさせていただいております。</p>
+      <p>2022年には San Holo 自身のレーベル bitbird にサインし楽曲をリリース、J-WAVE, block.fm 等ラジオでも取り上げられたほか楽曲提供、作品BGMなど制作をしながら、その後イギリス exobolt から2曲リリースされました。最近では ZETA DIVISION ストリーマー k4sen さんと Diverse System 企画のアルバム新作 Stream Palette 5 -chatting- に楽曲が収録されております。</p>
     </div>
   </div>
 </section>
 
-<section class="section tight-top">
-  <div class="wrap">
-    <h2 class="section-label">– gears –</h2>
-    <div class="gear-grid">
 
+<!-- ============ 可能な業務 ============ -->
+<section class="section band-alt">
+  <div class="wrap">
+    <div class="prose reveal">
+      <h2>可能な業務</h2>
+      <ul>
+        <li>作編曲 / BGM製作</li>
+        <li>ギターアレンジ / レコーディング / 演奏</li>
+        <li>ライブマニピュレーター</li>
+        <li>ボーカル編集</li>
+        <li>音声編集 / バイノーラル可（カット, se追加, 整音, ポッドキャスト編集等）</li>
+        <li>ミックス / マスタリング</li>
+      </ul>
+      <p>いずれも対応可能でございます。英語でのやりとりも可能です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 制作環境 ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="prose reveal">
+      <h2>制作環境</h2>
+      <ul>
+        <li>PC : M1 Pro MacBook Pro 14&Prime;（サブpc / win11 ryzen5, 6600xt / mini itx build）</li>
+        <li>DAW : Logic Pro 11, その他プラグイン（UA, iZotope, oeksound, ni, ik, neural dsp 等）</li>
+        <li>ギター : ストラト, テレ, ムスタング, レスポール, 7弦, アコギ, ナイロン, ウクレレ</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 機材 ============ -->
+<section class="section band-alt">
+  <div class="wrap">
+    <h2 class="section-title reveal">gears</h2>
+    <p class="section-intro reveal reveal-d1">実際に制作・演奏で使用している機材です。</p>
+
+    <div class="gear-grid">
       <!-- ▼ 機材を追加するときはこの article をコピーしてください -->
-      <article class="gear">
+      <article class="gear reveal">
         <div class="shot"><img loading="lazy" src="images/gear/salen.jpg" alt="Sälen classic nx6 trem"></div>
         <h2>Sälen classic nx6 trem</h2>
         <p>solid body strandberg headless. 24f passive HH 5way blade w/trem. The ultimate 6st workhorse</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d1">
         <div class="shot"><img loading="lazy" src="images/gear/boden7.png" alt="Boden original nx7"></div>
         <h2>Boden original nx7</h2>
         <p>very solid headless strandberg 7string. 26.25 inch length and the fishman pu works really well. I use 10-64</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d2">
         <div class="shot"><img loading="lazy" src="images/gear/provi.jpeg" alt="Providence HSS Strat"></div>
         <h2>Providence HSS Strat</h2>
         <p>very versatile jp strat for most guitar music I play. sounds good plays good and looks good.</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d3">
         <div class="shot"><img loading="lazy" src="images/gear/tele.jpeg" alt="kanade KTL"></div>
         <h2>kanade KTL</h2>
         <p>made by Altero custom guitars in Shiga, Jpn. sounds good plays good and looks good as well.</p>
       </article>
 
-
-      <article class="gear">
+      <article class="gear reveal">
         <div class="shot"><img loading="lazy" src="images/gear/lespaul.jpeg" alt="Gibson Les Paul Standard"></div>
         <h2>Gibson Les Paul Standard</h2>
         <p>USA les paul. weight-relief les paul. flame top looks killer. sounds good as well</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d1">
         <div class="shot"><img loading="lazy" src="images/gear/martin.JPG" alt="martin GPC11e"></div>
         <h2>martin GPC11e</h2>
         <p>martin acoustic guitar. sounds good plays good. I like the look of it.</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d2">
         <div class="shot"><img loading="lazy" src="images/gear/strings.jpeg" alt="strings, picks and others"></div>
         <h2>strings, picks and others</h2>
         <p>optiweb mainly. Dunlop picks and capo. hd600, uavolt276, providence cables.</p>
       </article>
 
-      <article class="gear">
+      <article class="gear reveal reveal-d3">
         <div class="shot"><img loading="lazy" src="images/gear/softwares.jpeg" alt="Softwares"></div>
         <h2>Softwares</h2>
         <p>Logic, izotope, ua, oek, xfer, cableguys, NI, ik, xln, softube, korg, spitfire, melodyne, ggd, neural dsp etc...</p>
       </article>
+    </div>
+  </div>
+</section>
 
+<!-- ============ 問い合わせ導線 ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="prose reveal" style="text-align: center;">
+      <h2>work with me</h2>
+      <p>楽曲制作・アレンジ、ギターレコーディング、ミックス／マスタリング等のご依頼を承っています。</p>
+      <p style="margin-top: 2rem;"><a class="btn-outline" href="contact.html">お問い合わせはこちら</a></p>
     </div>
   </div>
 </section>
@@ -801,25 +1184,50 @@ img { display: block; max-width: 100%; }
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // --- スマホのメニュー開閉 ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
-  if (!toggle || !links) return;
 
-  toggle.addEventListener("click", () => {
-    const open = links.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-
-  links.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
     });
-  });
+
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        links.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // --- スクロールに合わせてフェードイン ---
+  const revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      // アニメーションを切っている環境、非対応ブラウザでは最初から表示
+      revealEls.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      );
+      revealEls.forEach((el) => io.observe(el));
+    }
+  }
 });
 
-// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠して
-// 背景色のタイルとして表示する(画像を配置すれば自動で表示される)
+// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠す
 document.addEventListener(
   "error",
   (e) => {

@@ -232,7 +232,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: -24px;
   background: var(--hero-img) center / cover no-repeat;
-  filter: blur(6px);
+  filter: blur(10px);
   z-index: 0;
 }
 
@@ -507,62 +507,125 @@ img { display: block; max-width: 100%; }
   .news-grid { grid-template-columns: 1fr; gap: 44px; }
 }
 
-/* ---------- works(テキストリスト) ---------- */
+/* ---------- works(2カラムのクレジット一覧) ---------- */
 
 .works {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding-left: 12px;
 }
+
+.works-section { margin-bottom: 4.2rem; }
+.works-section:last-child { margin-bottom: 0; }
 
 .works h2 {
-  font-size: 1.05rem;
-  font-weight: 500;
-  margin: 3.4rem 0 1.4rem;
-  color: var(--text);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0 0 1.4rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.works h2:first-child { margin-top: 0; }
+/* 1件 = 上に相手先 / 下に内容(全画面幅で共通) */
+.credit {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
 
-.works li {
-  position: relative;
-  padding-left: 1.5em;
-  margin-bottom: 1.35rem;
-  font-size: 1.05rem;
+.credit:last-child { border-bottom: none; }
+
+.credit-who {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--text);
+  margin-bottom: 0.3rem;
 }
 
-.works li::before {
-  content: "・";
+.credit-what {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* リンクの下線は控えめに。ホバーではっきりさせる */
+.credit-what a {
+  color: var(--text-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-what a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* 左側(相手先)のリンク。元から緑なので下線のみで示す */
+.credit-who a {
+  color: inherit;
+  border-bottom: 1px solid rgba(78, 124, 99, 0.3);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.credit-who a:hover {
+  color: var(--text);
+  border-color: var(--text);
+}
+
+/* 会場ごとにまとめた公演リスト */
+.credit-what ul { margin: 0; }
+
+.credit-what li {
+  position: relative;
+  padding-left: 1em;
+  margin-bottom: 0.35em;
+}
+
+.credit-what li:last-child { margin-bottom: 0; }
+
+.credit-what li::before {
+  content: "–";
   position: absolute;
-  left: 0.2em;
+  left: 0;
+  color: var(--muted-dim);
 }
 
-.works .note {
-  margin: 1.6rem 0 0;
-  font-size: 1.05rem;
-  color: var(--text);
-}
-
-.works .plain {
-  margin: 1.4rem 0 0;
-  font-size: 1.05rem;
+.works-note {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 1.2rem;
 }
 
 .works-sign {
-  max-width: 1000px;
-  margin: 5rem auto 0;
-  padding-left: 12px;
-  font-size: 1.05rem;
+  max-width: 1040px;
+  margin: 4rem auto 0;
+  font-size: 0.95rem;
+  color: var(--text-dim);
 }
 
-@media (max-width: 640px) {
-  .works li,
-  .works .note,
-  .works .plain,
-  .works h2,
-  .works-sign { font-size: 0.98rem; }
+/* ページ末尾の問い合わせ導線 */
+.works-cta {
+  max-width: 1040px;
+  margin: 3.2rem auto 0;
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.works-cta p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  max-width: 40em;
+}
+
+@media (max-width: 760px) {
+  .works-cta p { font-size: 0.92rem; }
+}
+
+@media (max-width: 760px) {
+  .credit-what,
+  .works-sign { font-size: 0.92rem; }
 }
 
 /* ---------- コンタクト ---------- */
@@ -680,6 +743,286 @@ img { display: block; max-width: 100%; }
   justify-content: center;
 }
 
+
+/* ---------- 個別記事ページ ---------- */
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-hero {
+  margin-bottom: 2.4rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.article-hero img {
+  width: 100%;
+  height: auto;
+}
+
+.article-body {
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--text-soft);
+}
+
+.article-body h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.8rem 0 1rem;
+}
+
+.article-body h2:first-child { margin-top: 0; }
+
+.article-body p { margin-bottom: 1.6rem; }
+
+.article-body ul { margin: 0 0 1.6rem; }
+
+.article-body li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.article-body li::before {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.article-body a {
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.article-body a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.article-body strong { color: var(--text); font-weight: 700; }
+
+/* 記事末尾のリンク集 */
+.article-links {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 一覧へ戻る導線 */
+.article-back {
+  max-width: 760px;
+  margin: 3.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.article-back a {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  transition: color 0.2s var(--ease);
+}
+
+.article-back a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .article-body { font-size: 0.94rem; }
+}
+
+
+/* =========================================================================
+   about ページ用の拡張レイアウト
+   セクションごとに背景を切り替え、狭い本文幅と大きな写真でリズムを作る
+   ========================================================================= */
+
+/* 背景を一段明るくした帯 */
+.band-alt { background: #262321; }
+
+/* ページ上部の全幅写真 */
+.page-hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #141312;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-img) center 35% / cover no-repeat;
+  z-index: 0;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%);
+  z-index: 0;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px 52px;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.page-hero p {
+  max-width: 34em;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .page-hero { min-height: 38vh; }
+  .page-hero-inner { padding: 0 20px 36px; }
+  /* スマホでは説明文を隠し、写真とタイトルだけ見せる */
+  .page-hero p { display: none; }
+  .page-hero h1 { margin-bottom: 0; }
+}
+
+/* 狭い本文カラム。中央に置いて中身は左揃え */
+.prose {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.prose h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.prose p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+.prose ul { margin: 0 0 1.5rem; }
+
+.prose li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 0.45em;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.prose li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.prose .lead-sm {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 0.9rem;
+}
+
+/* 段落の間に挟む大きな写真 */
+.figure-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.figure-wide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure-caption {
+  max-width: 1100px;
+  margin: 0.9rem auto 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* セクション見出し(中央) */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 500;
+  margin-bottom: 0.9rem;
+}
+
+.section-intro {
+  max-width: 44em;
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* =========================================================================
+   スクロールに合わせたフェードイン
+   ========================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 </style>
 </head>
 <body>
@@ -709,6 +1052,13 @@ img { display: block; max-width: 100%; }
     <div class="news-grid">
 
       <!-- ▼ 新しいお知らせはこの article をコピーして、一番上に追加してください -->
+      <!-- ▼ 記事ページを作ったら、見出しを <a href="news/ファイル名.html"> で囲みます -->
+      <article class="news-item">
+        <h2><a href="news/2026-04-18-stream-palette-5-chatting.html">Stream Palette 5 -chatting- に「ordinary days」を提供しました</a></h2>
+        <p>ZETA DIVISION所属ストリーマー k4sen さんと Diverse System によるコンピレーションアルバムに楽曲が収録されています。</p>
+        <p class="news-date">2026年4月18日</p>
+      </article>
+
       <article class="news-item">
         <h2>M3春 WE DIE YOUNG『AFTERLIFE vol.1』tr.3</h2>
         <p>2026 4/26に開催されるM3春向け新作音楽アルバムの情報です。WE DIE YOUNG新アルバム『AFTERLIFE vol.1』tr.3にTsuyoshi A. の楽曲が収録されています。</p>
@@ -752,25 +1102,50 @@ img { display: block; max-width: 100%; }
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // --- スマホのメニュー開閉 ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
-  if (!toggle || !links) return;
 
-  toggle.addEventListener("click", () => {
-    const open = links.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-
-  links.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
     });
-  });
+
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        links.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // --- スクロールに合わせてフェードイン ---
+  const revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      // アニメーションを切っている環境、非対応ブラウザでは最初から表示
+      revealEls.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      );
+      revealEls.forEach((el) => io.observe(el));
+    }
+  }
 });
 
-// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠して
-// 背景色のタイルとして表示する(画像を配置すれば自動で表示される)
+// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠す
 document.addEventListener(
   "error",
   (e) => {

@@ -743,6 +743,286 @@ img { display: block; max-width: 100%; }
   justify-content: center;
 }
 
+
+/* ---------- 個別記事ページ ---------- */
+
+.article {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-meta {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-bottom: 2.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.article-hero {
+  margin-bottom: 2.4rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.article-hero img {
+  width: 100%;
+  height: auto;
+}
+
+.article-body {
+  font-size: 0.98rem;
+  line-height: 2;
+  color: var(--text-soft);
+}
+
+.article-body h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 2.8rem 0 1rem;
+}
+
+.article-body h2:first-child { margin-top: 0; }
+
+.article-body p { margin-bottom: 1.6rem; }
+
+.article-body ul { margin: 0 0 1.6rem; }
+
+.article-body li {
+  position: relative;
+  padding-left: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.article-body li::before {
+  content: "\2013";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.article-body a {
+  color: var(--text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.article-body a:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.article-body strong { color: var(--text); font-weight: 700; }
+
+/* 記事末尾のリンク集 */
+.article-links {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* 一覧へ戻る導線 */
+.article-back {
+  max-width: 760px;
+  margin: 3.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line-soft);
+}
+
+.article-back a {
+  color: var(--text-dim);
+  font-size: 0.92rem;
+  transition: color 0.2s var(--ease);
+}
+
+.article-back a:hover { color: var(--accent); }
+
+@media (max-width: 640px) {
+  .article-body { font-size: 0.94rem; }
+}
+
+
+/* =========================================================================
+   about ページ用の拡張レイアウト
+   セクションごとに背景を切り替え、狭い本文幅と大きな写真でリズムを作る
+   ========================================================================= */
+
+/* 背景を一段明るくした帯 */
+.band-alt { background: #262321; }
+
+/* ページ上部の全幅写真 */
+.page-hero {
+  position: relative;
+  min-height: 46vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #141312;
+}
+
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-img) center 35% / cover no-repeat;
+  z-index: 0;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 100%);
+  z-index: 0;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 40px 52px;
+}
+
+.page-hero h1 {
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.8rem;
+}
+
+.page-hero p {
+  max-width: 34em;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.9;
+}
+
+@media (max-width: 640px) {
+  .page-hero { min-height: 38vh; }
+  .page-hero-inner { padding: 0 20px 36px; }
+  /* スマホでは説明文を隠し、写真とタイトルだけ見せる */
+  .page-hero p { display: none; }
+  .page-hero h1 { margin-bottom: 0; }
+}
+
+/* 狭い本文カラム。中央に置いて中身は左揃え */
+.prose {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.prose h2 {
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+  font-weight: 500;
+  color: var(--text);
+  margin: 0 0 1.6rem;
+  letter-spacing: 0.01em;
+}
+
+.prose p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+}
+
+.prose p:last-child { margin-bottom: 0; }
+
+.prose ul { margin: 0 0 1.5rem; }
+
+.prose li {
+  position: relative;
+  padding-left: 1.1em;
+  margin-bottom: 0.45em;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+.prose li::before {
+  content: "\2022";
+  position: absolute;
+  left: 0;
+  color: var(--muted-dim);
+}
+
+.prose .lead-sm {
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 0.9rem;
+}
+
+/* 段落の間に挟む大きな写真 */
+.figure-wide {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #2a2827;
+}
+
+.figure-wide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.figure-caption {
+  max-width: 1100px;
+  margin: 0.9rem auto 0;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+/* セクション見出し(中央) */
+.section-title {
+  text-align: center;
+  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+  font-weight: 500;
+  margin-bottom: 0.9rem;
+}
+
+.section-intro {
+  max-width: 44em;
+  margin: 0 auto 3rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
+/* =========================================================================
+   スクロールに合わせたフェードイン
+   ========================================================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.75s var(--ease), transform 0.75s var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-d1 { transition-delay: 0.08s; }
+.reveal-d2 { transition-delay: 0.16s; }
+.reveal-d3 { transition-delay: 0.24s; }
+.reveal-d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
 </style>
 </head>
 <body>
@@ -959,25 +1239,50 @@ img { display: block; max-width: 100%; }
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+  // --- スマホのメニュー開閉 ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
-  if (!toggle || !links) return;
 
-  toggle.addEventListener("click", () => {
-    const open = links.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(open));
-  });
-
-  links.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", () => {
-      links.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+  if (toggle && links) {
+    toggle.addEventListener("click", () => {
+      const open = links.classList.toggle("is-open");
+      toggle.setAttribute("aria-expanded", String(open));
     });
-  });
+
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        links.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // --- スクロールに合わせてフェードイン ---
+  const revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      // アニメーションを切っている環境、非対応ブラウザでは最初から表示
+      revealEls.forEach((el) => el.classList.add("is-visible"));
+    } else {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      );
+      revealEls.forEach((el) => io.observe(el));
+    }
+  }
 });
 
-// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠して
-// 背景色のタイルとして表示する(画像を配置すれば自動で表示される)
+// 画像ファイルがまだ置かれていない場合、割れた画像アイコンを隠す
 document.addEventListener(
   "error",
   (e) => {
