@@ -393,7 +393,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: -24px;
   background: var(--hero-img) center / cover no-repeat;
-  filter: blur(6px);
+  filter: blur(8px);
   z-index: 0;
 }
 
@@ -466,6 +466,9 @@ img { display: block; max-width: 100%; }
   padding: 72px 0;
 }
 
+/* 余白を詰めたいセクション用 */
+.section.compact { padding: 50px 0; }
+
 .section-label {
   text-align: center;
   font-size: 1.15rem;
@@ -477,10 +480,15 @@ img { display: block; max-width: 100%; }
 
 .art-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 56px 44px;
-  max-width: 1080px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 44px 32px;
+  max-width: 1320px;
   margin: 0 auto;
+}
+
+/* 中間の画面幅では4列 */
+@media (max-width: 1240px) {
+  .art-grid { grid-template-columns: repeat(4, 1fr); gap: 40px 28px; }
 }
 
 .art-grid a,
@@ -1146,7 +1154,7 @@ img { display: block; max-width: 100%; }
 
 /* 狭い本文カラム。中央に置いて中身は左揃え */
 .prose {
-  max-width: 620px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -1298,7 +1306,7 @@ img { display: block; max-width: 100%; }
 </section>
 
 <!-- ============ 経歴 ============ -->
-<section class="section">
+<section class="section compact">
   <div class="wrap">
     <div class="prose reveal">
       <h2>経歴</h2>
@@ -1311,7 +1319,7 @@ img { display: block; max-width: 100%; }
 
 
 <!-- ============ 可能な業務 ============ -->
-<section class="section band-alt">
+<section class="section compact band-alt">
   <div class="wrap">
     <div class="prose reveal">
       <h2>可能な業務</h2>
@@ -1329,7 +1337,7 @@ img { display: block; max-width: 100%; }
 </section>
 
 <!-- ============ 制作環境 ============ -->
-<section class="section">
+<section class="section compact">
   <div class="wrap">
     <div class="prose reveal">
       <h2>制作環境</h2>
@@ -1343,7 +1351,7 @@ img { display: block; max-width: 100%; }
 </section>
 
 <!-- ============ 機材 ============ -->
-<section class="section band-alt">
+<section class="section compact band-alt">
   <div class="wrap">
     <h2 class="section-title reveal">gears</h2>
     <p class="section-intro reveal reveal-d1">実際に制作・演奏で使用している機材です。</p>
@@ -1402,7 +1410,7 @@ img { display: block; max-width: 100%; }
 </section>
 
 <!-- ============ 問い合わせ導線 ============ -->
-<section class="section">
+<section class="section compact">
   <div class="wrap">
     <div class="prose reveal" style="text-align: center;">
       <h2>work with me</h2>
@@ -1463,7 +1471,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+        // 下側に余白を取り、画面に入る前から表示を始める(スクロール前でも先の要素が出る)
+        { threshold: 0, rootMargin: "0px 0px 400px 0px" }
       );
       revealEls.forEach((el) => io.observe(el));
     }

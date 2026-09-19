@@ -396,7 +396,7 @@ img { display: block; max-width: 100%; }
   position: absolute;
   inset: -24px;
   background: var(--hero-img) center / cover no-repeat;
-  filter: blur(6px);
+  filter: blur(8px);
   z-index: 0;
 }
 
@@ -469,6 +469,9 @@ img { display: block; max-width: 100%; }
   padding: 72px 0;
 }
 
+/* 余白を詰めたいセクション用 */
+.section.compact { padding: 50px 0; }
+
 .section-label {
   text-align: center;
   font-size: 1.15rem;
@@ -480,10 +483,15 @@ img { display: block; max-width: 100%; }
 
 .art-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 56px 44px;
-  max-width: 1080px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 44px 32px;
+  max-width: 1320px;
   margin: 0 auto;
+}
+
+/* 中間の画面幅では4列 */
+@media (max-width: 1240px) {
+  .art-grid { grid-template-columns: repeat(4, 1fr); gap: 40px 28px; }
 }
 
 .art-grid a,
@@ -1149,7 +1157,7 @@ img { display: block; max-width: 100%; }
 
 /* 狭い本文カラム。中央に置いて中身は左揃え */
 .prose {
-  max-width: 620px;
+  max-width: 780px;
   margin: 0 auto;
 }
 
@@ -1303,27 +1311,25 @@ img { display: block; max-width: 100%; }
 <section class="section">
   <div class="wrap">
     <div class="art-grid">
-      <!-- ▼ 各 href="#" を配信ページのURLに差し替えてください。
-           右のコメントがその画像の曲名です。discography の Listen Here と同じURLでOK -->
-      <a class="art-item reveal" href="https://ffm.to/dnwv-concrete" target="_blank" rel="noopener" aria-label="薄明 (ft. q&rsquo;yul)"><div class="art"><img loading="lazy" src="images/artwork/hakumei.jpeg" alt="薄明 (ft. q&rsquo;yul)"></div></a>  <!-- 薄明 (ft. q&rsquo;yul) -->
-      <a class="art-item reveal reveal-d1" href="https://wavforme.fanlink.tv/wav-054" target="_blank" rel="noopener" aria-label="Velvet Glide"><div class="art"><img loading="lazy" src="images/artwork/velvet.jpeg" alt="Velvet Glide"></div></a>  <!-- Velvet Glide -->
-      <a class="art-item reveal reveal-d2" href="https://artists.landr.com/mindscape-ep" target="_blank" rel="noopener" aria-label="mindscape ep"><div class="art"><img loading="lazy" src="images/artwork/mindscape_ep.jpg" alt="mindscape ep"></div></a>  <!-- mindscape ep -->
-      <a class="art-item reveal reveal-d3" href="https://sp5.diverse.jp/" target="_blank" rel="noopener" aria-label="ordinary days"><div class="art"><img loading="lazy" src="images/artwork/SP5_Wallpaper_16-9-4K_Chatting.jpeg" alt="ordinary days"></div></a>  <!-- ordinary days -->
+      <!-- ▼ 5列×3行。右のコメントがその画像の曲名です。
+           追加するときは <a> を1つコピーして、href と aria-label と画像パスを書き換えてください -->
+      <a class="art-item reveal" href="https://ffm.to/dnwv-concrete" target="_blank" rel="noopener" aria-label="薄明 (ft. q&rsquo;yul)"><div class="art"><img src="images/artwork/hakumei.jpeg" alt="薄明 (ft. q&rsquo;yul)"></div></a>  <!-- 薄明 (ft. q&rsquo;yul) -->
+      <a class="art-item reveal reveal-d1" href="https://wavforme.fanlink.tv/wav-054" target="_blank" rel="noopener" aria-label="Velvet Glide"><div class="art"><img src="images/artwork/velvet.jpeg" alt="Velvet Glide"></div></a>  <!-- Velvet Glide -->
+      <a class="art-item reveal reveal-d2" href="https://artists.landr.com/mindscape-ep" target="_blank" rel="noopener" aria-label="mindscape ep"><div class="art"><img src="images/artwork/mindscape_ep.jpg" alt="mindscape ep"></div></a>  <!-- mindscape ep -->
+      <a class="art-item reveal reveal-d3" href="https://sp5.diverse.jp/" target="_blank" rel="noopener" aria-label="ordinary days"><div class="art"><img src="images/artwork/SP5_Wallpaper_16-9-4K_Chatting.jpeg" alt="ordinary days"></div></a>  <!-- ordinary days -->
+      <a class="art-item reveal reveal-d4" href="https://wavforme.com/releases/newwave2024ss/" target="_blank" rel="noopener" aria-label="just wanna feel good"><div class="art"><img src="images/artwork/feel_good.jpeg" alt="just wanna feel good"></div></a>  <!-- just wanna feel good -->
 
-      <a class="art-item reveal" href="https://wavforme.com/releases/newwave2024ss/" target="_blank" rel="noopener" aria-label="just wanna feel good"><div class="art"><img loading="lazy" src="images/artwork/feel_good.jpeg" alt="just wanna feel good"></div></a>  <!-- just wanna feel good -->
-      <a class="art-item reveal reveal-d1" href="https://bitbird.lnk.to/ctv4" target="_blank" rel="noopener" aria-label="reminisce w/ Wavfire"><div class="art"><img loading="lazy" src="images/artwork/reminisce.jpeg" alt="reminisce w/ Wavfire"></div></a>  <!-- reminisce w/ Wavfire -->
-      <a class="art-item reveal reveal-d2" href="https://hypeddit.com/6dqx77" target="_blank" rel="noopener" aria-label="starlight (ft.ねんね)"><div class="art"><img loading="lazy" src="images/artwork/starlight.jpeg" alt="starlight (ft.ねんね)"></div></a>  <!-- starlight (ft.ねんね) -->
-      <a class="art-item reveal reveal-d3" href="https://artists.landr.com/064837238180" target="_blank" rel="noopener" aria-label="amidst"><div class="art"><img loading="lazy" src="images/artwork/amidst_tr3.jpeg" alt="amidst"></div></a>  <!-- amidst -->
+      <a class="art-item reveal" href="https://bitbird.lnk.to/ctv4" target="_blank" rel="noopener" aria-label="reminisce w/ Wavfire"><div class="art"><img src="images/artwork/reminisce.jpeg" alt="reminisce w/ Wavfire"></div></a>  <!-- reminisce w/ Wavfire -->
+      <a class="art-item reveal reveal-d1" href="https://hypeddit.com/6dqx77" target="_blank" rel="noopener" aria-label="starlight (ft.ねんね)"><div class="art"><img src="images/artwork/starlight.jpeg" alt="starlight (ft.ねんね)"></div></a>  <!-- starlight (ft.ねんね) -->
+      <a class="art-item reveal reveal-d2" href="https://artists.landr.com/064837238180" target="_blank" rel="noopener" aria-label="amidst"><div class="art"><img src="images/artwork/amidst_tr3.jpeg" alt="amidst"></div></a>  <!-- amidst -->
+      <a class="art-item reveal reveal-d3" href="https://fanlink.tv/junpyou" target="_blank" rel="noopener" aria-label="純氷"><div class="art"><img loading="lazy" src="images/artwork/junpyo.jpeg" alt="純氷"></div></a>  <!-- 純氷 -->
+      <a class="art-item reveal reveal-d4" href="https://artists.landr.com/064837279992" target="_blank" rel="noopener" aria-label="amidst ep"><div class="art"><img loading="lazy" src="images/artwork/amidstep_final.jpeg" alt="amidst ep"></div></a>  <!-- amidst ep -->
 
-      <a class="art-item reveal" href="https://fanlink.tv/junpyou" target="_blank" rel="noopener" aria-label="純氷"><div class="art"><img loading="lazy" src="images/artwork/junpyo.jpeg" alt="純氷"></div></a>  <!-- 純氷 -->
-      <a class="art-item reveal reveal-d1" href="https://artists.landr.com/064837279992" target="_blank" rel="noopener" aria-label="amidst ep"><div class="art"><img loading="lazy" src="images/artwork/amidstep_final.jpeg" alt="amidst ep"></div></a>  <!-- amidst ep -->
-      <a class="art-item reveal reveal-d2" href="https://artists.landr.com/064837822358" target="_blank" rel="noopener" aria-label="anew w/nenne"><div class="art"><img loading="lazy" src="images/artwork/anew_0419.jpg" alt="anew w/nenne"></div></a>  <!-- anew w/nenne -->
-      <a class="art-item reveal reveal-d3" href="https://hypeddit.com/exobolt/worldsvol1" target="_blank" rel="noopener" aria-label="Space Boyz (ft. Christian Hayward)"><div class="art"><img loading="lazy" src="images/artwork/spaceboyz.jpeg" alt="Space Boyz (ft. Christian Hayward)"></div></a>  <!-- Space Boyz (ft. Christian Hayward) -->
-
-      <a class="art-item reveal" href="https://wavforme.com/releases/wav-036/" target="_blank" rel="noopener" aria-label="Good Days"><div class="art"><img loading="lazy" src="images/artwork/mbb3.jpeg" alt="Good Days"></div></a>  <!-- Good Days -->
-      <a class="art-item reveal reveal-d1" href="https://artists.landr.com/064837238173" target="_blank" rel="noopener" aria-label="evergreen"><div class="art"><img loading="lazy" src="images/artwork/evergreen_tr_2.jpeg" alt="evergreen"></div></a>  <!-- evergreen -->
-      <a class="art-item reveal reveal-d2" href="https://artists.landr.com/064837232706" target="_blank" rel="noopener" aria-label="elevation"><div class="art"><img loading="lazy" src="images/artwork/elevation_tr_1.jpeg" alt="elevation"></div></a>  <!-- elevation -->
-      <a class="art-item reveal reveal-d3" href="https://wavforme.com/releases/wav-040/" target="_blank" rel="noopener" aria-label="sundown"><div class="art"><img loading="lazy" src="images/artwork/cnl2.jpeg" alt="sundown"></div></a>  <!-- sundown -->
+      <a class="art-item reveal" href="https://artists.landr.com/064837822358" target="_blank" rel="noopener" aria-label="anew w/nenne"><div class="art"><img loading="lazy" src="images/artwork/anew_0419.jpg" alt="anew w/nenne"></div></a>  <!-- anew w/nenne -->
+      <a class="art-item reveal reveal-d1" href="https://hypeddit.com/exobolt/worldsvol1" target="_blank" rel="noopener" aria-label="Space Boyz (ft. Christian Hayward)"><div class="art"><img loading="lazy" src="images/artwork/spaceboyz.jpeg" alt="Space Boyz (ft. Christian Hayward)"></div></a>  <!-- Space Boyz (ft. Christian Hayward) -->
+      <a class="art-item reveal reveal-d2" href="https://wavforme.com/releases/wav-036/" target="_blank" rel="noopener" aria-label="Good Days"><div class="art"><img loading="lazy" src="images/artwork/mbb3.jpeg" alt="Good Days"></div></a>  <!-- Good Days -->
+      <a class="art-item reveal reveal-d3" href="https://artists.landr.com/064837238173" target="_blank" rel="noopener" aria-label="evergreen"><div class="art"><img loading="lazy" src="images/artwork/evergreen_tr_2.jpeg" alt="evergreen"></div></a>  <!-- evergreen -->
+      <a class="art-item reveal reveal-d4" href="https://artists.landr.com/064837232706" target="_blank" rel="noopener" aria-label="elevation"><div class="art"><img loading="lazy" src="images/artwork/elevation_tr_1.jpeg" alt="elevation"></div></a>  <!-- elevation -->
     </div>
 
     <p class="center reveal" style="margin-top: 72px;">
@@ -1451,7 +1457,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
         },
-        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+        // 下側に余白を取り、画面に入る前から表示を始める(スクロール前でも先の要素が出る)
+        { threshold: 0, rootMargin: "0px 0px 400px 0px" }
       );
       revealEls.forEach((el) => io.observe(el));
     }
