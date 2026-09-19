@@ -218,13 +218,22 @@ img { display: block; max-width: 100%; }
 
 .hero {
   position: relative;
-  min-height: 62vh;
+  /* 画面の高さに対する割合。数値を下げると縦が短くなる */
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #141312;
-  padding: 80px 20px;
+  padding: 64px 20px;
   overflow: hidden;
+}
+
+/* スマホではさらに浅く。下のコンテンツが早く見え始める */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 38vh;
+    padding: 44px 20px;
+  }
 }
 
 /* 背景画像のレイヤー。画像パスは index.html の --hero-img で指定している。
