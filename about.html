@@ -31,6 +31,8 @@
 
   --font: "Quicksand", "Noto Sans JP", "Hiragino Sans", sans-serif;
   --max: 1560px;
+  --nav-h: 104px;     /* ヘッダーの高さ(PC) */
+  --nav-h-sm: 62px;   /* ヘッダーの高さ(スマホ) */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -102,52 +104,62 @@ img { display: block; max-width: 100%; }
 
 /* ---------- ヘッダー ---------- */
 
+/* 下のコンテンツ(写真)の上に重ねる。背景は持たせない */
 .site-header {
-  background: var(--band);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  background: transparent;
 }
 
 .header-bar {
+  position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  /* ヘッダー帯の上下余白。数値を上げると帯が厚くなる */
-  padding: 15px 40px;
+  gap: 9px;
+  padding: 18px 40px 22px;
   max-width: var(--max);
   margin: 0 auto;
 }
 
 .logotype {
-  font-size: 1.6rem;
+  font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: 0.01em;
   white-space: nowrap;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links {
   display: flex;
-  gap: 2.1rem;
+  gap: 1.7rem;
 }
 
 .nav-links a {
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-weight: 500;
   color: var(--text);
-  opacity: 0.85;
+  opacity: 0.8;
+  padding: 2px 0;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
   transition: opacity 0.2s var(--ease);
 }
 
 .nav-links a:hover,
-.nav-links a[aria-current="page"] {
-  opacity: 1;
-}
+.nav-links a[aria-current="page"] { opacity: 1; }
 
 .nav-links a[aria-current="page"] {
-  font-weight: 700;
+  border-bottom: 1px solid currentColor;
 }
 
 .nav-toggle {
   display: none;
+  position: absolute;
+  top: 14px;
+  right: 20px;
   background: none;
   border: none;
   color: var(--text);
@@ -157,32 +169,30 @@ img { display: block; max-width: 100%; }
 
 .nav-toggle svg { width: 26px; height: 26px; }
 
-/* ページタイトル(ヘッダー帯の中に大きく表示) */
-.page-title {
+/* 写真を持たないページ用の見出し帯。ヘッダーの高さ分だけ上を空ける */
+.page-head {
+  background: var(--band);
+  padding: calc(var(--nav-h) + 10px) 20px 22px;
   text-align: center;
-  /* clamp(最小, 画面幅に応じた可変値, 最大)。数値を上げると大きくなる */
+}
+
+.page-title {
   font-size: clamp(2.1rem, 5vw, 3.6rem);
   font-weight: 700;
-  padding: 0 20px 20px;
   letter-spacing: -0.01em;
+  margin: 0;
 }
+
+/* ヘッダーの下に直接コンテンツが来るページ(記事など)用 */
+.below-nav { padding-top: calc(var(--nav-h) + 30px); }
 
 @media (max-width: 900px) {
   .header-bar {
-    position: relative;
-    justify-content: flex-start;
-    gap: 1rem;
-    padding: 12px 64px 12px 20px;
+    padding: 14px 20px;
+    gap: 0;
   }
 
-  /* ボタンは並び順に依存せず、帯の右端に直接固定する */
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  .nav-toggle { display: block; }
 
   .nav-links {
     position: absolute;
@@ -208,20 +218,36 @@ img { display: block; max-width: 100%; }
     display: block;
     padding: 14px 0;
     border-bottom: 1px solid var(--line);
+    text-shadow: none;
   }
+
+  .nav-links a[aria-current="page"] { border-bottom-color: var(--line); }
+
+  .page-head { padding-top: calc(var(--nav-h-sm) + 16px); }
+  .below-nav { padding-top: calc(var(--nav-h-sm) + 24px); }
 }
 
 /* ---------- ヒーロー(トップページ) ---------- */
 
 .hero {
   position: relative;
-  min-height: 62vh;
+  /* 画面の高さに対する割合。数値を下げると縦が短くなる */
+  min-height: 66vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #141312;
-  padding: 80px 20px;
+  /* 上はヘッダーが重なる分を確保 */
+  padding: calc(var(--nav-h) + 24px) 20px 56px;
   overflow: hidden;
+}
+
+/* スマホではさらに浅く。下のコンテンツが早く見え始める */
+@media (max-width: 640px) {
+  .hero {
+    min-height: 52vh;
+    padding: calc(var(--nav-h-sm) + 22px) 20px 44px;
+  }
 }
 
 /* 背景画像のレイヤー。画像パスは index.html の --hero-img で指定している。
@@ -327,14 +353,47 @@ img { display: block; max-width: 100%; }
   display: block;
 }
 
-/* クリックできることが分かるようにホバーで少し明るくする */
-.art-grid a .art {
-  transition: transform 0.25s var(--ease), opacity 0.25s var(--ease);
+/* ホバーで暗くなり、曲名が浮かび上がる(曲名は aria-label から取得) */
+.art-item { position: relative; }
+
+.art-item::before,
+.art-item::after {
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
 }
 
-.art-grid a:hover .art {
-  transform: translateY(-3px);
-  opacity: 0.82;
+.art-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 12, 10, 0.68);
+  z-index: 1;
+}
+
+.art-item::after {
+  content: attr(aria-label);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+  z-index: 2;
+}
+
+.art-item:hover::before,
+.art-item:hover::after,
+.art-item:focus-visible::before,
+.art-item:focus-visible::after { opacity: 1; }
+
+@media (max-width: 560px) {
+  .art-item::after { font-size: 0.78rem; padding: 8px; }
 }
 
 .art {
