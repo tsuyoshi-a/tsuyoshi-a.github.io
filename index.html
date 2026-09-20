@@ -898,9 +898,9 @@ img { display: block; max-width: 100%; }
 
 .embed-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  max-width: 1280px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px 32px;
+  max-width: 1100px;
   margin: 0 auto;
   align-items: start;
 }
@@ -921,15 +921,15 @@ img { display: block; max-width: 100%; }
 
 /* Xタイムラインの枠。読み込み前でも高さを確保して段組みが崩れないようにする */
 .embed-x {
-  min-height: 420px;
-  max-height: 520px;
+  min-height: 450px;
+  max-height: 450px;
   overflow: hidden;
   border-radius: 4px;
 }
 
-@media (max-width: 1000px) {
+/* 幅が狭いときは縦1列に */
+@media (max-width: 860px) {
   .embed-grid { grid-template-columns: 1fr; gap: 40px; }
-  .embed-x { max-height: 480px; }
 }
 
 /* ---------- フッター(SNSリンク付き) ---------- */
@@ -1394,21 +1394,30 @@ img { display: block; max-width: 100%; }
       <div class="embed-col reveal">
         <h3>Spotify</h3>
         <iframe src="https://open.spotify.com/embed/artist/1vS6I48PIZxlTHRakRoeQw?utm_source=generator&theme=0"
-                height="420" frameborder="0" allowfullscreen
+                height="450" frameborder="0" allowfullscreen
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy" title="Spotify"></iframe>
       </div>
 
       <div class="embed-col reveal reveal-d1">
+        <h3>Apple Music</h3>
+        <iframe src="https://embed.music.apple.com/jp/artist/tsuyoshi-a/1525944843"
+                height="450" frameborder="0"
+                allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+                loading="lazy" title="Apple Music"></iframe>
+      </div>
+
+      <div class="embed-col reveal">
         <h3>SoundCloud</h3>
-        <iframe height="420" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" title="SoundCloud"
+        <iframe height="450" scrolling="no" frameborder="no" allow="autoplay" loading="lazy" title="SoundCloud"
                 src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/tsuyoshi_a&color=%234e7c63&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=false"></iframe>
       </div>
 
-      <div class="embed-col reveal reveal-d2">
+      <div class="embed-col reveal reveal-d1">
         <h3>X</h3>
         <div class="embed-x">
-          <a class="twitter-timeline" data-theme="dark" data-height="480" data-chrome="noheader nofooter transparent"
+          <a class="twitter-timeline" data-theme="dark" data-height="450" data-chrome="noheader nofooter transparent"
              href="https://twitter.com/tsuyoshi_a_">Posts by tsuyoshi_a_</a>
         </div>
       </div>
