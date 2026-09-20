@@ -692,16 +692,50 @@ img { display: block; max-width: 100%; }
 /* ---------- ニュース ---------- */
 
 .news-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px 56px;
-  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* 1件 = 左にサムネイル / 右にテキスト。サムネイルは無くても崩れない */
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.news-item:first-child { border-top: 1px solid var(--line-soft); }
+
+.news-thumb {
+  /* サムネイルの大きさ。2箇所とも同じ数値にしてください */
+  flex: 0 0 104px;
+  width: 104px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #2a2827;
+  border: 1px solid var(--line-soft);
+}
+
+.news-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s var(--ease);
+}
+
+a.news-thumb:hover img { opacity: 0.75; }
+
+.news-body { flex: 1; min-width: 0; }
+
 .news-item h2 {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-  margin-bottom: 1.2rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+  line-height: 1.5;
+  margin-bottom: 0.7rem;
 }
 
 .news-item h2 a {
@@ -716,16 +750,21 @@ img { display: block; max-width: 100%; }
 
 .news-item p {
   color: var(--text-soft);
-  margin-bottom: 1.6rem;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
 }
 
 .news-date {
   color: var(--text-dim);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  margin-bottom: 0 !important;
 }
 
-@media (max-width: 800px) {
-  .news-grid { grid-template-columns: 1fr; gap: 44px; }
+@media (max-width: 560px) {
+  .news-item { gap: 14px; padding: 20px 0; }
+  .news-thumb { flex-basis: 76px; width: 76px; }
+  .news-item p { font-size: 0.88rem; }
 }
 
 /* ---------- works(2カラムのクレジット一覧) ---------- */
@@ -1328,39 +1367,50 @@ img { display: block; max-width: 100%; }
 <section class="section">
   <div class="wrap">
     <div class="news-grid">
-
-      <!-- ▼ 新しいお知らせはこの article をコピーして、一番上に追加してください -->
-      <!-- ▼ 記事ページを作ったら、見出しを <a href="news/ファイル名.html"> で囲みます -->
-      <article class="news-item">
-        <h2><a href="news/2026-04-18-stream-palette-5-chatting.html">Stream Palette 5 -chatting- に「ordinary days」を提供しました</a></h2>
-        <p>ZETA DIVISION所属ストリーマー k4sen さんと Diverse System によるコンピレーションアルバムに楽曲が収録されています。</p>
-        <p class="news-date">2026年4月18日</p>
+      <article class="news-item reveal">
+        <a class="news-thumb" href="news/2026-04-18-stream-palette-5-chatting.html"><img src="images/artwork/SP5_Wallpaper_16-9-4K_Chatting.jpeg" alt="Stream Palette 5 -chatting- に「ordinary days」を提供しました"></a>
+        <div class="news-body">
+          <h2><a href="news/2026-04-18-stream-palette-5-chatting.html">Stream Palette 5 -chatting- に「ordinary days」を提供しました</a></h2>
+          <p>ZETA DIVISION所属ストリーマー k4sen さんと Diverse System によるコンピレーションアルバムに楽曲が収録されています。</p>
+          <p class="news-date">2026年4月18日</p>
+        </div>
       </article>
 
-      <article class="news-item">
-        <h2>M3春 WE DIE YOUNG『AFTERLIFE vol.1』tr.3</h2>
-        <p>2026 4/26に開催されるM3春向け新作音楽アルバムの情報です。WE DIE YOUNG新アルバム『AFTERLIFE vol.1』tr.3にTsuyoshi A. の楽曲が収録されています。</p>
-        <p class="news-date">2026年4月18日</p>
+      <article class="news-item reveal reveal-d1">
+        <div class="news-thumb"><img src="images/artwork/wdy_faded_rain.jpeg" alt="M3春 WE DIE YOUNG『AFTERLIFE vol.1』tr.3"></div>
+        <div class="news-body">
+          <h2>M3春 WE DIE YOUNG『AFTERLIFE vol.1』tr.3</h2>
+          <p>2026 4/26に開催されるM3春向け新作音楽アルバムの情報です。WE DIE YOUNG新アルバム『AFTERLIFE vol.1』tr.3にTsuyoshi A. の楽曲が収録されています。</p>
+          <p class="news-date">2026年4月18日</p>
+        </div>
       </article>
 
-      <article class="news-item">
-        <h2>Dennou.wav「concrete.」</h2>
-        <p>◆新曲お知らせ◆ Dennou.wavより新アルバム「concrete.」tr.2にTsuyoshi A. の楽曲「薄明 (ft. q'yul)」が収録されています。</p>
-        <p class="news-date">2026年4月9日</p>
+      <article class="news-item reveal">
+        <div class="news-thumb"><img loading="lazy" src="images/artwork/hakumei.jpeg" alt="Dennou.wav「concrete.」"></div>
+        <div class="news-body">
+          <h2>Dennou.wav「concrete.」</h2>
+          <p>◆新曲お知らせ◆ Dennou.wavより新アルバム「concrete.」tr.2にTsuyoshi A. の楽曲「薄明 (ft. q&rsquo;yul)」が収録されています。</p>
+          <p class="news-date">2026年4月9日</p>
+        </div>
       </article>
 
-      <article class="news-item">
-        <h2>wavforme 冬コミ C107『Cities: Neonlights 3』</h2>
-        <p>2025コミケ冬に向けたアルバム『Cities: Neonlights 3』にtr.8 – Tsuyoshi A. 「Velvet Glide」が収録されています。</p>
-        <p class="news-date">2026年3月31日</p>
+      <article class="news-item reveal reveal-d1">
+        <div class="news-thumb"><img loading="lazy" src="images/artwork/velvet.jpeg" alt="wavforme 冬コミ C107『Cities: Neonlights 3』"></div>
+        <div class="news-body">
+          <h2>wavforme 冬コミ C107『Cities: Neonlights 3』</h2>
+          <p>2025コミケ冬に向けたアルバム『Cities: Neonlights 3』にtr.8 – Tsuyoshi A. 「Velvet Glide」が収録されています。</p>
+          <p class="news-date">2026年3月31日</p>
+        </div>
       </article>
 
-      <article class="news-item">
-        <h2>10/19 -Oppidan- tokyo show</h2>
-        <p>I'm supporting Oppidan (UK) circus tokyo show 10/19.</p>
-        <p class="news-date">2024年9月17日</p>
+      <article class="news-item reveal">
+        <div class="news-thumb"><img loading="lazy" src="images/news/oppidan.jpeg" alt="10/19 -Oppidan- tokyo show"></div>
+        <div class="news-body">
+          <h2>10/19 -Oppidan- tokyo show</h2>
+          <p>I&rsquo;m supporting Oppidan (UK) circus tokyo show 10/19.</p>
+          <p class="news-date">2024年9月17日</p>
+        </div>
       </article>
-
     </div>
   </div>
 </section>

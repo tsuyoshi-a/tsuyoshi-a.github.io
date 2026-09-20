@@ -698,16 +698,50 @@ img { display: block; max-width: 100%; }
 /* ---------- ニュース ---------- */
 
 .news-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px 56px;
-  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* 1件 = 左にサムネイル / 右にテキスト。サムネイルは無くても崩れない */
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.news-item:first-child { border-top: 1px solid var(--line-soft); }
+
+.news-thumb {
+  /* サムネイルの大きさ。2箇所とも同じ数値にしてください */
+  flex: 0 0 104px;
+  width: 104px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #2a2827;
+  border: 1px solid var(--line-soft);
+}
+
+.news-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.25s var(--ease);
+}
+
+a.news-thumb:hover img { opacity: 0.75; }
+
+.news-body { flex: 1; min-width: 0; }
+
 .news-item h2 {
-  font-size: clamp(1.4rem, 2.2vw, 1.9rem);
-  margin-bottom: 1.2rem;
+  font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+  line-height: 1.5;
+  margin-bottom: 0.7rem;
 }
 
 .news-item h2 a {
@@ -722,16 +756,21 @@ img { display: block; max-width: 100%; }
 
 .news-item p {
   color: var(--text-soft);
-  margin-bottom: 1.6rem;
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
 }
 
 .news-date {
   color: var(--text-dim);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  margin-bottom: 0 !important;
 }
 
-@media (max-width: 800px) {
-  .news-grid { grid-template-columns: 1fr; gap: 44px; }
+@media (max-width: 560px) {
+  .news-item { gap: 14px; padding: 20px 0; }
+  .news-thumb { flex-basis: 76px; width: 76px; }
+  .news-item p { font-size: 0.88rem; }
 }
 
 /* ---------- works(2カラムのクレジット一覧) ---------- */
