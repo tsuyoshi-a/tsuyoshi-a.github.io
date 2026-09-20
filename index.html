@@ -1070,6 +1070,19 @@ img { display: block; max-width: 100%; }
 
 .article-body strong { color: var(--text); font-weight: 700; }
 
+/* 記事内に貼るXの投稿。読み込み前は引用枠として表示される */
+.article-body .twitter-tweet {
+  margin: 2.2rem auto !important;
+}
+
+.article-body blockquote.twitter-tweet:not(.twitter-tweet-rendered) {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.1em 1.2em;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
 /* 記事末尾のリンク集 */
 .article-links {
   margin-top: 3rem;

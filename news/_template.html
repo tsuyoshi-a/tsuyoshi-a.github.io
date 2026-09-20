@@ -1,14 +1,41 @@
 <!DOCTYPE html>
+<!-- =========================================================================
+     記事の雛形
+     -------------------------------------------------------------------------
+     使い方:
+       1. このファイルをコピーして、ファイル名を「日付-内容.html」にする
+          例) 2026-10-31-new-release.html
+       2. 下の【ここを書き換える】の箇所をすべて埋める
+       3. news/ フォルダにアップロードする
+       4. news.html に一覧用のリンクを1つ追加する
+
+     注意:
+       ・このファイルは news フォルダの中にあるので、リンクの頭に ../ が付いています
+       ・OGP(SNSシェア用)のURLは https:// から始まる完全な形で書く必要があります
+     ========================================================================= -->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>contact | Tsuyoshi A.</title>
-<meta name="description" content="Tsuyoshi A. へのお問い合わせ。楽曲制作、ギターレコーディング、ミックス・マスタリング等のご依頼はこちらから。">
+
+<!-- 【ここを書き換える】検索結果に出るタイトル。曲名やイベント名など、検索されそうな固有名詞を入れる -->
+<title>記事のタイトル | Tsuyoshi A.</title>
+
+<!-- 【ここを書き換える】検索結果に出る説明文。120文字程度 -->
+<meta name="description" content="記事の要約をここに書きます。">
+
+<!-- 【ここを書き換える】SNSでシェアされたときの表示 -->
+<meta property="og:title" content="記事のタイトル">
+<meta property="og:description" content="記事の要約をここに書きます。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tsuyoshi-a.github.io/news/ファイル名.html">
+<meta property="og:image" content="https://tsuyoshi-a.github.io/images/news/画像ファイル名.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="icon" href="images/favicon.jpg">
+<link rel="icon" href="../images/favicon.jpg">
 <style>
 /* ==========================================================================
    Tsuyoshi A. — 旧WordPressサイトのデザイン再現版
@@ -1293,7 +1320,7 @@ img { display: block; max-width: 100%; }
 
 <header class="site-header">
   <div class="header-bar">
-    <a href="index.html" class="logotype">Tsuyoshi A.</a>
+    <a href="../index.html" class="logotype">Tsuyoshi A.</a>
     <button class="search-toggle" aria-label="サイト内を検索" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
     </button>
@@ -1302,12 +1329,12 @@ img { display: block; max-width: 100%; }
     </button>
     <nav>
       <ul class="nav-links">
-        <li><a href="index.html">home</a></li>
-        <li><a href="about.html">about / gears</a></li>
-        <li><a href="discography.html">discography</a></li>
-        <li><a href="news.html">news</a></li>
-        <li><a href="works.html">works</a></li>
-        <li><a href="contact.html" aria-current="page">contact</a></li>
+        <li><a href="../index.html">home</a></li>
+        <li><a href="../about.html">about / gears</a></li>
+        <li><a href="../discography.html">discography</a></li>
+        <li><a href="../news.html" aria-current="page">news</a></li>
+        <li><a href="../works.html">works</a></li>
+        <li><a href="../contact.html">contact</a></li>
       </ul>
     </nav>
   </div>
@@ -1321,19 +1348,55 @@ img { display: block; max-width: 100%; }
   </div>
 </header>
 
-<div class="page-head">
-  <h1 class="page-title">contact</h1>
+<!-- 記事の見出し帯。ヘッダーが重なる分の余白はCSS側で確保されています -->
+<div class="article-head">
+  <div class="article-head-inner">
+    <!-- 【ここを書き換える】ページ内の見出し。上の <title> と同じでOK -->
+    <h1>記事のタイトル</h1>
+    <!-- 【ここを書き換える】日付 -->
+    <p class="article-date">2026年10月31日</p>
+  </div>
 </div>
 
 <section class="section">
-  <div class="wrap-narrow">
-    <div class="contact-body">
-      <p>楽曲制作、ギターレコーディング、ミックス・マスタリング、音声編集等のご依頼・ご相談はこちらから。英語でのやりとりも可能です。</p>
+  <div class="wrap">
+    <article class="article">
 
-      <!-- ▼ メールアドレスを差し替えてください -->
-      <div class="link-list link-list-single">
-        <a href="mailto:contact.tsuyoshi.a@gmail.com">Email</a>
+      <!-- 【任意】記事上部の画像。不要ならこのブロックごと削除 -->
+      <div class="article-hero">
+        <img src="../images/news/画像ファイル名.jpeg" alt="画像の説明">
       </div>
+
+      <!-- 【ここを書き換える】本文 -->
+      <div class="article-body">
+
+        <p>ここに本文を書きます。段落ごとに &lt;p&gt; と &lt;/p&gt; で囲んでください。</p>
+
+        <p>リンクを入れたいときは <a href="https://example.com" target="_blank" rel="noopener">このように</a> 書きます。</p>
+
+        <h2>小見出しを入れたいとき</h2>
+
+        <p>小見出しは &lt;h2&gt; で囲みます。長い記事は小見出しで区切ると読みやすくなります。</p>
+
+        <h2>収録情報</h2>
+
+        <ul>
+          <li>アルバム名 : ○○○</li>
+          <li>収録曲 : tr.○ ○○○</li>
+          <li>リリース日 : 2026年○月○日</li>
+        </ul>
+
+      </div>
+
+      <!-- 【任意】記事末尾のリンクボタン。不要ならこのブロックごと削除 -->
+      <div class="article-links">
+        <a class="btn-outline" href="https://example.com" target="_blank" rel="noopener">配信ページはこちら</a>
+      </div>
+
+    </article>
+
+    <div class="article-back">
+      <a href="../news.html">&larr; news 一覧へ戻る</a>
     </div>
   </div>
 </section>

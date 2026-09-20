@@ -1073,6 +1073,19 @@ img { display: block; max-width: 100%; }
 
 .article-body strong { color: var(--text); font-weight: 700; }
 
+/* 記事内に貼るXの投稿。読み込み前は引用枠として表示される */
+.article-body .twitter-tweet {
+  margin: 2.2rem auto !important;
+}
+
+.article-body blockquote.twitter-tweet:not(.twitter-tweet-rendered) {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1.1em 1.2em;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
 /* 記事末尾のリンク集 */
 .article-links {
   margin-top: 3rem;
@@ -1338,6 +1351,11 @@ img { display: block; max-width: 100%; }
         <p>Diverse System での公募を知って以来どこかで応募してみようと思っていましたが、k4sen さんのストリームパレットに関してはよく知るコンテンツの一つで、心地よい4つ打ち楽曲を提供できればと思って制作しました。</p>
 
         <p>採用いただいて本当に嬉しいです。ありがとう Diverse System / k4sen さん🙂‍↕️</p>
+
+        <!-- Xの投稿の埋め込み。別の投稿にしたい場合は下のURLを差し替えてください -->
+        <blockquote class="twitter-tweet" data-theme="dark" data-dnt="true" data-lang="ja">
+          <a href="https://twitter.com/k4sen/status/1783118612846501977">https://twitter.com/k4sen/status/1783118612846501977</a>
+        </blockquote>
 
         <h2>収録情報</h2>
 
@@ -1619,5 +1637,6 @@ document.addEventListener(
 })();
 
 </script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
