@@ -482,6 +482,21 @@ img { display: block; max-width: 100%; }
 /* 余白を詰めたいセクション用 */
 .section.compact { padding: 50px 0; }
 
+/* 末尾にボタンがあるセクション。ボタンの下を詰める */
+.section.pb-tight { padding-bottom: 22px; }
+
+/* ボタンの上の余白 */
+.btn-row {
+  text-align: center;
+  margin-top: 52px;
+  margin-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .section.pb-tight { padding-bottom: 12px; }
+  .btn-row { margin-top: 38px; }
+}
+
 .section-label {
   text-align: center;
   font-size: 1.15rem;
@@ -1380,7 +1395,7 @@ a.news-thumb:hover img { opacity: 0.75; }
   </div>
 </section>
 
-<section class="section">
+<section class="section pb-tight">
   <div class="wrap">
     <div class="art-grid">
       <!-- ▼ 5列×3行。右のコメントがその画像の曲名です。
@@ -1404,13 +1419,13 @@ a.news-thumb:hover img { opacity: 0.75; }
       <a class="art-item hide-2col reveal reveal-d4" href="https://artists.landr.com/064837232706" target="_blank" rel="noopener" aria-label="elevation"><div class="art"><img loading="lazy" src="images/artwork/elevation_tr_1.jpeg" alt="elevation"></div></a>  <!-- elevation -->
     </div>
 
-    <p class="center reveal" style="margin-top: 72px;">
+    <p class="btn-row reveal">
       <a class="btn-fill is-compact" href="discography.html">view entire catalog here 💿</a>
     </p>
   </div>
 </section>
 
-<section class="section">
+<section class="section pb-tight">
   <div class="wrap">
     <h2 class="section-label reveal">– news –</h2>
     <div class="news-grid">
@@ -1451,7 +1466,7 @@ a.news-thumb:hover img { opacity: 0.75; }
       </article>
     </div>
 
-    <p class="center reveal" style="margin-top: 56px;">
+    <p class="btn-row reveal">
       <a class="btn-fill is-compact" href="news.html">check all news 📃</a>
     </p>
   </div>
