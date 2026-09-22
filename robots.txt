@@ -1,4 +1,46 @@
+# すべての検索エンジン・クローラーに全ページを許可
 User-agent: *
+Allow: /
+
+# --- AIクローラー(明示的に許可) ---
+# ChatGPT / OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Claude / Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google の生成AI向け
+User-agent: Google-Extended
+Allow: /
+
+# Apple
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta
+User-agent: FacebookBot
+Allow: /
+
+# Common Crawl(多くのAIが学習元として利用)
+User-agent: CCBot
 Allow: /
 
 Sitemap: https://tsuyoshi-a.github.io/sitemap.xml
