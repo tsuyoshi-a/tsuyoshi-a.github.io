@@ -137,18 +137,24 @@
     document.addEventListener("mouseover", (e) => setHovered(e.target.closest("[data-track]")));
     root.addEventListener("mouseleave", () => setHovered(null));
   }
+  // 画面の中央に最も近い段を選ぶ。2 列の作品のように同じ高さに複数並んでいるときは、
+  // その中から左右ランダムに 1 つ選び、その段が中央にある間は同じものに留める
   let pick = 0;
   function pickCentered(now) {
     if (now - pick < 120) return;
     pick = now;
-    const mid = innerHeight / 2;
-    let best = null, bd = innerHeight * .2;
+    const mid = innerHeight / 2, limit = innerHeight * .2;
+    const near = [];
     document.querySelectorAll("[data-track]").forEach((el) => {
       if (!el.offsetParent) return;
       const r = el.getBoundingClientRect(), d = Math.abs(r.top + r.height / 2 - mid);
-      if (d < bd) { bd = d; best = el; }
+      if (d < limit) near.push({ el, d });
     });
-    setHovered(best);
+    if (!near.length) return setHovered(null);
+    const min = Math.min(...near.map((n) => n.d));
+    const row = near.filter((n) => n.d - min < 4).map((n) => n.el);
+    if (row.includes(hovered)) return;
+    setHovered(row[(Math.random() * row.length) | 0]);
   }
   function idle(now) {
     if (!band || !canHover) return null;
