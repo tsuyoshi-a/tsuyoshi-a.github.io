@@ -58,7 +58,8 @@ ul { list-style: none; }
 .tracker.light .lbl { color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, .5); }
 
 /* ---------- ヘッダー ---------- */
-header.hd { position: sticky; top: 0; z-index: 40; background: var(--bg); color: var(--fg); transition: background .3s, color .3s; }
+/* ヘッダー（スマホのメニュー・検索を含む）は追跡枠（z-index 50）より上に重ねる */
+header.hd { position: sticky; top: 0; z-index: 60; background: var(--bg); color: var(--fg); transition: background .3s, color .3s; }
 header.hd .right { display: flex; align-items: center; gap: 26px; }
 /* トップ：透明にしてヒーロー写真の上に重ねる。.solid（ヒーローを過ぎた / メニューを開いた）で色付きに戻る */
 header.hd.over { position: fixed; left: 0; right: 0; background: transparent; color: #fff; }

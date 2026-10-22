@@ -170,8 +170,11 @@
   function frame(now) {
     const dt = Math.min(50, now - last); last = now;
     let g = null, label = "", light = false;
-    if (!canHover) pickCentered(now);
-    if (hovered) {
+    // メニューや検索を開いている間は枠を出さない（裏のページを追っても見えないため）
+    const covered = hd.classList.contains("open") || (panel && !panel.hidden);
+    if (covered) setHovered(null);
+    else if (!canHover) pickCentered(now);
+    if (covered) { /* 枠なし */ } else if (hovered) {
       const r = hovered.getBoundingClientRect(), p = 8;
       g = { x: r.left - p, y: r.top - p, w: r.width + p * 2, h: r.height + p * 2 };
       label = `${hovered.dataset.track} — x ${fmt((r.left + r.width / 2) / innerWidth)} y ${fmt((r.top + r.height / 2) / innerHeight)}`;
