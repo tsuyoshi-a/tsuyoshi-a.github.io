@@ -182,7 +182,8 @@ footer.ft .wrap { display: flex; justify-content: space-between; gap: 20px; flex
   .grid { grid-template-columns: repeat(3, 1fr); }
   .gear { grid-template-columns: repeat(2, 1fr); }
   .about { grid-template-columns: 1fr; gap: 36px; }
-  .about .ph { max-width: 280px; }
+  /* 追跡枠は外側の [data-track] の大きさで付くので、写真ではなく外側の幅を抑える */
+  .about > [data-track] { max-width: 280px; }
   header.hd nav { display: none; }
   header.hd .menu { display: block; }
   header.hd .right { gap: 14px; }
